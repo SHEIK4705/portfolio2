@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your Name — Web Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Professional web developer building clean, scalable, and reliable web applications."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              heading: ["Space Grotesk", "sans-serif"],
+              body: ["IBM Plex Sans", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            colors: {
+              bg: "#0b0f14",
+              panel: "#111827",
+              text: "#e5e7eb",
+              muted: "#9ca3af",
+              violet1: "#a78bfa",
+              violet2: "#7c3aed",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  </head>
+
+  <body class="font-body antialiased">
+    <!-- ================= HEADER ================= -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-bg/80 backdrop-blur border-b border-white/10"
+    >
+      <div class="container flex items-center justify-between h-16">
+        <!-- Brand -->
+        <a href="#hero" class="font-heading text-2xl font-semibold">
+          Arif<span class="text-violet1">.</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-10 text-base">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Hamburger -->
+        <label class="hamburger md:hidden cursor-pointer z-50">
+          <input type="checkbox" id="menu-toggle" class="hidden" />
+          <svg viewBox="0 0 32 32" class="w-9 h-9 stroke-white">
+            <path
+              class="line line-top-bottom"
+              d="M27 10 13 10C10.8 10 9 8.2 9 6
+         9 3.5 10.8 2 13 2
+         15.2 2 17 3.8 17 6
+         L17 26C17 28.2 18.8 30 21 30
+         23.2 30 25 28.2 25 26
+         25 23.8 23.2 22 21 22L7 22"
+            />
+            <path class="line" d="M7 16 27 16" />
+          </svg>
+        </label>
+      </div>
+    </header>
+
+    <!-- Overlay -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden"
+    ></div>
+
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="fixed top-0 left-0 h-full w-72 bg-bg/95 backdrop-blur-2xl border-r border-white/10 z-50 -translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+    >
+      <!-- Brand -->
+      <div class="px-6 pt-6 pb-4">
+        <a href="#hero" class="font-heading text-2xl font-semibold text-white">
+          Arif<span class="text-violet1">.</span>
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="mx-6 h-px bg-white/10"></div>
+
+      <!-- Nav -->
+      <nav class="mt-6 px-4 space-y-3 text-base">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#services" class="mobile-link">Services</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#process" class="mobile-link">Process</a>
+        <a href="#faq" class="mobile-link">FAQ</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+      </nav>
+    </aside>
+
+    <!-- ================= HERO ================= -->
+    <section
+      id="hero"
+      class="min-h-screen flex items-center pt-32 relative overflow-hidden"
+    >
+      <!-- HERO CANVAS -->
+      <canvas
+        id="hero-canvas"
+        class="absolute inset-0 w-full h-full z-0 pointer-events-none"
+      >
+      </canvas>
+
+      <!-- Glow -->
+      <div
+        class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-violet2/20 blur-[180px] rounded-full"
+      ></div>
+      <div
+        class="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-violet1/20 blur-[160px] rounded-full"
+      ></div>
+
+      <div class="container relative z-10 max-w-7xl">
+        <h1
+          class="font-heading font-semibold leading-[1.05] text-[clamp(3.5rem,7vw,6.5rem)]"
+        >
+          Hi, I’m <span class="gradient-text font-bold">Arif</span>
+        </h1>
+
+        <!-- Rotating words (SCALED) -->
+        <div class="mt-6">
+          <div class="loader text-3xl md:text-4xl h-[56px]">
+            <p class="mr-2">I build</p>
+            <div class="words h-[40px]">
+              <span class="word">clean</span>
+              <span class="word">modern</span>
+              <span class="word">affordable</span>
+              <span class="word">scalable</span>
+              <span class="word">clean</span>
+            </div>
+          </div>
+          <p class="text-3xl">Websites.</p>
+        </div>
+
+        <p class="mt-10 max-w-xl text-xl text-muted leading-relaxed">
+          I help startups and businesses design and develop reliable web
+          applications with clarity and care.
+        </p>
+
+        <!-- ================= HERO CTA ================= -->
+        <div class="mt-14 cta flex flex-wrap gap-6 items-center">
+          <!-- PRIMARY CTA -->
+          <a
+            href="#contact"
+            class="group relative inline-flex items-center justify-center rounded-xl p-[2px] bg-gradient-to-r from-violet1 via-violet2 to-violet1 transition-all duration-300 cta-pulse hover:shadow-[0_0_40px_rgba(124,58,237,0.45)]"
+          >
+            <span
+              class="relative z-10 flex items-center gap-3 px-8 py-4 rounded-[10px] bg-bg text-white font-medium transition-all duration-300 group-hover:bg-transparent"
+            >
+              Start a project
+
+              <!-- Arrow -->
+              <svg
+                class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+
+          <!-- SECONDARY CTA -->
+          <a
+            href="#"
+            class="relative inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/15 text-muted transition-all duration-300 hover:border-violet1 hover:text-text"
+          >
+            View work
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="py-32 container max-w-6xl">
+      <div class="max-w-3xl my-16">
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-violet1 mb-4"
+        >
+          Professional Overview
+        </p>
+        <h2
+          class="font-heading text-4xl md:text-5xl font-semibold leading-tight"
+        >
+          Building web solutions with
+          <span class="gradient-text">clarity and intent</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-20 items-start">
+        <!-- LEFT -->
+        <div>
+          <img
+            src="images/profile2.jpg"
+            alt="Sheik Mohammed Arif - Web Developer"
+            class="img-border mx-auto w-[70%] rounded-full object-cover"
+          />
+        </div>
+
+        <!-- RIGHT -->
+        <div class="space-y-6 text-lg text-muted font-body leading-relaxed">
+          <p
+            class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
+          >
+            About Me
+          </p>
+          <p>
+            I’m a freelance web developer who creates modern, scalable web
+            applications for businesses and startups. My work focuses on clean
+            front-end development, thoughtful structure, and long-term
+            maintainability.
+          </p>
+
+          <p>
+            I collaborate with international clients to design and build
+            reliable web solutions that prioritize performance, usability, and
+            clear communication. Every project is approached with consistency,
+            simplicity, and attention to detail.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CV + CONTACT LINKS ================= -->
+    <section id="links" class="py-24 bg-panel">
+      <div class="container max-w-4xl text-center space-y-10">
+        <!-- Text -->
+        <div>
+          <p
+            class="font-mono text-xs uppercase tracking-widest text-violet1 mb-3"
+          >
+            Connect
+          </p>
+          <h3 class="font-heading text-2xl md:text-3xl font-semibold">
+            Let’s work together
+          </h3>
+          <p class="mt-3 text-muted font-body">
+            Download my CV or follow me on the platforms below.
+          </p>
+        </div>
+
+        <!-- Download CV -->
+        <div class="flex justify-center">
+          <a
+            href="#"
+            class="group inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-violet1/40 text-violet1 font-body font-medium transition-all duration-300 hover:border-violet1 hover:shadow-[0_0_25px_rgba(124,58,237,0.35)]"
+          >
+            <!-- Download Icon -->
+            <svg
+              viewBox="0 0 24 24"
+              class="w-5 h-5 fill-current transition-transform duration-300 group-hover:translate-y-0.5"
+            >
+              <path d="M12 16l4-5h-3V4h-2v7H8l4 5zm-7 2v2h14v-2H5z" />
+            </svg>
+
+            <span>Download CV</span>
+          </a>
+        </div>
+
+        <!-- Follow Me -->
+        <div class="space-y-4">
+          <p class="font-mono text-xs uppercase tracking-widest text-muted">
+            Follow me
+          </p>
+
+          <!-- Social Icons -->
+          <div class="flex flex-wrap justify-center gap-4">
+            <!-- GitHub -->
+            <a href="https://github.com/SHEIK4705" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483
+      0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466
+      -.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032
+      .892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338
+      -2.22-.253-4.555-1.113-4.555-4.951
+      0-1.093.39-1.988 1.029-2.688
+      -.103-.253-.446-1.27.098-2.646
+      0 0 .84-.27 2.75 1.026
+      A9.564 9.564 0 0112 6.844
+      a9.56 9.56 0 012.504.337
+      c1.909-1.296 2.747-1.026 2.747-1.026
+      .546 1.376.202 2.393.1 2.646
+      .64.7 1.028 1.595 1.028 2.688
+      0 3.848-2.339 4.695-4.566 4.944
+      .359.31.678.92.678 1.855
+      0 1.338-.012 2.419-.012 2.747
+      0 .268.18.58.688.482
+      A10.02 10.02 0 0022 12.017
+      C22 6.484 17.523 2 12 2z"
+                />
+              </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/sheik-mohammed-arif-a-3b3036327" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5
+        1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8h4.56v14H.22zM8.34 8h4.37v1.92h.06
+        c.61-1.16 2.1-2.38 4.32-2.38
+        4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.62
+        c0-1.58-.03-3.62-2.21-3.62
+        -2.21 0-2.55 1.73-2.55 3.51V22H8.34z"
+                />
+              </svg>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/917904889179?text=Hello%20Arif,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." class="social-btn" aria-label="WhatsApp">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+                xmlns="www.w3.org"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.012 2c-5.508 0-9.987 4.479-9.987 9.987 0 1.763.46 3.42 1.262 4.86L2 22l5.314-1.395a9.917 9.917 0 004.698 1.186h.005c5.507 0 9.986-4.479 9.986-9.987 0-2.67-1.04-5.18-2.924-7.065A9.925 9.925 0 0012.012 2zm5.47 14.02c-.3.84-1.502 1.532-2.07 1.637-.53.099-1.214.162-3.642-.84-3.08-1.268-5.07-4.401-5.223-4.604-.153-.203-1.222-1.626-1.222-3.1 0-1.474.773-2.197 1.048-2.494.275-.297.6-.372.8-.372l.574.005c.182.008.423-.069.664.512.248.599.847 2.07.92 2.219.074.149.123.322.025.52-.099.198-.149.322-.297.496-.149.173-.313.387-.446.52-.149.148-.305.31-.132.61.174.298.773 1.275 1.66 2.065.14.124.96.86 2.078 1.347.347.151.554.126.76-.112.207-.238.892-1.04 1.132-1.399.24-.359.48-.298.81-.174.33.124 2.096 1.026 2.458 1.211.362.185.603.275.69.424.088.148.088.86-.213 1.7z"
+                />
+              </svg>
+            </a>
+
+            <!-- Mail -->
+            <a href="mailto:sheikwebstudio@gmail.com" class="social-btn" aria-label="Mail">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+                xmlns="www.w3.org"
+              >
+                <path
+                  d="M1.5 4.5A2.25 2.25 0 013.75 2.25h16.5A2.25 2.25 0 0122.5 4.5v15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 19.5v-15zm16.5 1.125L12 11.25 4.5 5.625V17.25h15V5.625zM12 9.75l7.5-4.875H4.5l7.5 4.875z"
+                />
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/smarif_4705" class="social-btn" aria-label="Instagram">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+                xmlns="www.w3.org"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.065.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.01 9.283 2 12 2zm0 1.8c-2.67 0-2.987.01-4.042.059-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.048 1.055-.058 1.371-.058 4.042s.01 2.987.058 4.042c.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.042.058s2.987-.01 4.042-.058c.975-.045 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.371.058-4.042s-.01-2.987-.058-4.042c-.045-.975-.207-1.504-.344-1.857-.182-.467-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.882-.3-1.857-.344-1.055-.048-1.371-.059-4.042-.059zM12 6.865A5.135 5.135 0 1 1 12 17.135 5.135 5.135 0 0 1 12 6.865zm0 1.8a3.335 3.335 0 1 0 0 6.67 3.335 3.335 0 0 0 0-6.67zM17.34 5.46a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"
+                />
+              </svg>
+            </a>
+
+            <!-- Call -->
+        <a href="tel:+917904889179" class="social-btn" aria-label="Call">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+  <path
+    d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2
+       a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57
+       a1 1 0 011 1V21a1 1 0 01-1 1
+       C10.07 22 2 13.93 2 4
+       a1 1 0 011-1h3.5
+       a1 1 0 011 1c0 1.25.2 2.46.57 3.59
+       a1 1 0 01-.25 1.01z"/>
+</svg>
+        </a>
+            <!-- Fiverr -->
+            <a href="#" class="social-btn font-mono text-sm font-semibold">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 508.02 508.02"
+                class="w-7 h-7"
+              >
+                <path
+                  fill="currentcolor"
+                  d="M345.87,207.66h-123V199.6c0-15.83,15.83-16.13,23.89-16.13
+    9.25,0,13.44.9,13.44.9v-43.6a155.21,155.21,0,0,0-19.71-1.19
+    c-25.68,0-73.16,7.16-73.16,61.51V208h-22.4v40.31h22.4v85.1
+    h-20.9v40.31H247.34V333.37H222.85v-85.1H290v85.1H269.13v40.31
+    h97.65V333.37H345.87Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="py-32">
+      <div class="container max-w-6xl">
+        <!-- Heading -->
+        <div class="mb-20 max-w-3xl">
+          <p
+            class="font-mono text-xs uppercase tracking-widest text-violet1 mb-4"
+          >
+            Services
+          </p>
+
+          <h2
+            class="font-heading text-4xl md:text-5xl font-semibold leading-tight"
+          >
+            What I can help you build
+          </h2>
+
+          <p class="mt-6 text-lg text-muted font-body">
+            I design and develop modern web solutions focused on performance,
+            usability, and long-term scalability.
+          </p>
+        </div>
+
+        <!-- Service Cards -->
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- Service 1 -->
+          <div class="service-card relative overflow-hidden">
+            <!-- Bottom gradient glow -->
+            <div class="service-glow"></div>
+
+            <!-- Content -->
+            <div class="relative z-10">
+              <h3 class="font-heading text-xl font-semibold mb-3">
+                Front-End Development
+              </h3>
+              <p class="font-body text-muted leading-relaxed">
+                Building responsive and accessible user interfaces using modern
+                technologies with clean, maintainable code.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card relative overflow-hidden">
+            <!-- Bottom gradient glow -->
+            <div class="service-glow"></div>
+            <!-- Content -->
+            <div class="relative z-10">
+              <h3 class="font-heading text-xl font-semibold mb-3">
+                Website Development
+              </h3>
+              <p class="font-body text-muted leading-relaxed">
+                Creating fast, SEO-friendly business and portfolio websites that
+                communicate clearly and convert visitors into clients.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card relative overflow-hidden">
+            <!-- Bottom gradient glow -->
+            <div class="service-glow"></div>
+            <!-- Content -->
+            <div class="relative z-10">
+              <h3 class="font-heading text-xl font-semibold mb-3">
+                Web Application Development
+              </h3>
+              <p class="font-body text-muted leading-relaxed">
+                Developing scalable web applications with a focus on structure,
+                performance, and real-world usability.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-card relative overflow-hidden">
+            <!-- Bottom gradient glow -->
+            <div class="service-glow"></div>
+
+            <!-- Content -->
+            <div class="relative z-10">
+              <h3 class="font-heading text-xl font-semibold mb-3">
+                UI Improvement & Optimization
+              </h3>
+              <p class="font-body text-muted leading-relaxed">
+                Improving existing interfaces by refining layout, typography,
+                accessibility, and overall user experience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" class="py-32 bg-[#0b0f1a]">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="max-w-2xl mb-20">
+          <p
+            class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
+          >
+            Projects
+          </p>
+          <h2 class="text-4xl font-semibold leading-tight">
+            Real-world projects I've built
+          </h2>
+          <p class="mt-4 text-gray-400">
+            A collection of practical applications demonstrating system design,
+            problem solving, and modern web development.
+          </p>
+        </div>
+
+        <!-- Project List -->
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- GrammarBase-->
+          <article class="project-card">
+            <img
+              src="https://picsum.photos/600/360?1"
+              alt="GrammarBase Project"
+            />
+            <div class="project-body">
+              <h3>GrammarBase – AI Learning Platform</h3>
+              <p>
+                AI-powered grammar learning platform for engineering students
+                with explanations, quizzes, and conversational practice.
+              </p>
+
+              <div class="tech-stack">
+                <span>AI</span>
+                <span>JavaScript</span>
+                <span>Web App</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="#">Live ↗</a>
+                <a href="#">Code ⌘</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Data Analysis -->
+          <article class="project-card">
+            <img
+              src="https://picsum.photos/600/360?2"
+              alt="Data Analysis Dashboard"
+            />
+            <div class="project-body">
+              <h3>Data Analysis Dashboard</h3>
+              <p>
+                PowerBI-style analytics dashboard supporting SQL, NoSQL, and CSV
+                sources with dynamic filtering and exportable charts.
+              </p>
+
+              <div class="tech-stack">
+                <span>SQL</span>
+                <span>NoSQL</span>
+                <span>Data Visualization</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="#">Live ↗</a>
+                <a href="#">Code ⌘</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- AI study Assistant -->
+          <article class="project-card">
+            <img
+              src="https://picsum.photos/600/360?3"
+              alt="AI Study Assistant"
+            />
+            <div class="project-body">
+              <h3>AI Study Assistant</h3>
+              <p>
+                Secure AI assistant where users upload documents to generate
+                summaries, flashcards, quizzes, and chat using JWT
+                authentication.
+              </p>
+
+              <div class="tech-stack">
+                <span>AI</span>
+                <span>JWT</span>
+                <span>Document Processing</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="#">Live ↗</a>
+                <a href="#">Code ⌘</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Truthlense -->
+          <article class="project-card">
+            <img
+              src="https://picsum.photos/600/360?4"
+              alt="TruthLens ML Project"
+            />
+            <div class="project-body">
+              <h3>TruthLens – Fake News Detection (ML)</h3>
+              <p>
+                Machine learning system for detecting misinformation using NLP
+                techniques with model evaluation and explainability.
+              </p>
+
+              <div class="tech-stack">
+                <span>Machine Learning</span>
+                <span>Fact Check API</span>
+                <span>Python</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="#">Live ↗</a>
+                <a href="#">Code ⌘</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Yaar solutions -->
+          <article class="project-card">
+            <img src="https://picsum.photos/600/360?5" alt="YAAR Solutions" />
+            <div class="project-body">
+              <h3>YAAR – Entrepreneur Development Platform</h3>
+              <p>
+                Platform designed to support aspiring entrepreneurs with
+                structured learning resources and business guidance.
+              </p>
+
+              <div class="tech-stack">
+                <span>Platform</span>
+                <span>Web Development</span>
+                <span>Startup</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="#">Live ↗</a>
+                <a href="#">Code ⌘</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NoteMate -->
+          <article class="project-card">
+            <img src="https://picsum.photos/600/360?6" alt="NoteMate" />
+            <div class="project-body">
+              <h3>NoteMate – Academic Collaboration Platform</h3>
+              <p>
+                Role-based academic platform enabling students and faculty to
+                upload, manage, and collaborate on notes and study materials.
+              </p>
+
+              <div class="tech-stack">
+                <span>Collaboration</span>
+                <span>Role-Based Access</span>
+                <span>Web App</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="#">Live ↗</a>
+                <a href="#">Code ⌘</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- AC Service -->
+          <article class="project-card">
+            <img
+              src="https://picsum.photos/600/360?7"
+              alt="AC Service Website"
+            />
+            <div class="project-body">
+              <h3>AC Service – Business Website</h3>
+              <p>
+                Service-based website for AC installation and maintenance with
+                booking, service listings, and customer contact flow.
+              </p>
+
+              <div class="tech-stack">
+                <span>Business Website</span>
+                <span>Frontend</span>
+                <span>UI Design</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="#">Live ↗</a>
+                <a href="#">Code ⌘</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" class="py-32 bg-[#0b0f1a]">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="max-w-2xl mb-20">
+          <p
+            class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
+          >
+            Skills & Expertise
+          </p>
+
+          <h2
+            class="text-4xl font-heading font-semibold leading-tight text-white"
+          >
+            Technologies I use to build real-world products
+          </h2>
+
+          <p class="mt-4 text-gray-400 font-body">
+            My skill set is focused on building complete, scalable, and
+            production-ready applications rather than experimenting with
+            isolated tools.
+          </p>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Frontend -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-12 h-12"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4 5a3 3 0 00-3 3v8a3 3 0 003 3h16a3 3 0 003-3V8a3 3 0 00-3-3H4zm1 3a1 1 0 011-1h12a1 1 0 011 1v7a1 1 0 01-1 1H6a1 1 0 01-1-1V8zm7 10.75a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75zM8.22 8.72a.75.75 0 011.06 0l2.25 2.25a.75.75 0 010 1.06l-2.25 2.25a.75.75 0 11-1.06-1.06L10.19 11.5 8.22 9.78a.75.75 0 010-1.06zM14.25 13.5a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75z"
+                />
+              </svg>
+            </div>
+
+            <h3 class="skill-title">Frontend Engineering</h3>
+
+            <p class="skill-desc">
+              Designing and building responsive, accessible, and visually clean
+              user interfaces with strong performance and usability focus.
+            </p>
+
+            <div class="skill-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Tailwind CSS</span>
+              <span>Bootstrap</span>
+              <span>React</span>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-12 h-12"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 2c4.418 0 8 1.119 8 2.5S16.418 7 12 7 4 5.881 4 4.5 7.582 2 12 2zm8 5.485c-.328.147-.692.28-1.082.395A13.2 13.2 0 0112 9c-2.457 0-4.708-.433-6.918-1.12C4.42 7.747 4 7.552 4 7.485V9.5c0 1.381 3.582 2.5 8 2.5s8-1.119 8-2.5V7.485zm0 5c-.328.147-.692.28-1.082.395A13.2 13.2 0 0112 14c-2.457 0-4.708-.433-6.918-1.12C4.42 12.747 4 12.552 4 12.485V14.5c0 1.381 3.582 2.5 8 2.5s8-1.119 8-2.5v-2.015zm0 5c-.328.147-.692.28-1.082.395A13.2 13.2 0 0112 19c-2.457 0-4.708-.433-6.918-1.12C4.42 17.747 4 17.552 4 17.485V19.5c0 1.381 3.582 2.5 8 2.5s8-1.119 8-2.5v-2.015z"
+                />
+              </svg>
+            </div>
+
+            <h3 class="skill-title">Backend & Databases</h3>
+
+            <p class="skill-desc">
+              Developing secure backend systems, APIs, authentication flows, and
+              database-driven applications with clean architecture.
+            </p>
+
+            <div class="skill-tags">
+              <span>Node.js</span>
+              <span>Express.js</span>
+              <span>PHP</span>
+              <span>MySQL</span>
+              <span>MongoDB</span>
+            </div>
+          </div>
+
+          <!-- AI / ML -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                fill="currentColor"
+                class="w-12 h-12"
+              >
+                <path
+                  d="M48,15 c-8,0-15,6-15,14 c0,1-2-1-4-1 c-7,0-13,6-13,13 c0,2,1,4,2,6 c-5,2-8,7-8,13 c0,8,7,15,15,15 c2,0,4,0,6-1 c4,6,10,10,17,10 L48,15 Z"
+                />
+
+                <path
+                  d="M35,30 q8,0 8,8"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M25,48 q6,0 6,8"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M35,68 q8,0 8,-8"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+
+                <rect x="50" y="30" width="18" height="28" rx="1" />
+
+                <path
+                  d="M48,38 L54,38 L54,42 L48,42"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <path
+                  d="M48,52 L54,52 L54,56 L48,56"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+
+                <path
+                  d="M59,30 L59,15 L68,15"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <circle cx="68" cy="15" r="4" />
+
+                <path
+                  d="M68,30 L68,22 L77,22"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <circle cx="77" cy="22" r="4" />
+
+                <path
+                  d="M68,44 L85,44"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <circle cx="85" cy="44" r="4" />
+
+                <path
+                  d="M68,58 L68,66 L77,66"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <circle cx="77" cy="66" r="4" />
+
+                <path
+                  d="M59,58 L59,73 L68,73"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <circle cx="68" cy="73" r="4" />
+              </svg>
+            </div>
+
+            <h3 class="skill-title">AI, Data & Machine Learning</h3>
+
+            <p class="skill-desc">
+              Building intelligent systems for data analysis, automation, and
+              machine-learning-based problem solving using real-world datasets.
+            </p>
+
+            <div class="skill-tags">
+              <span>Python</span>
+              <span>Machine Learning</span>
+              <span>NLP</span>
+              <span>Data Analysis</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-12 h-12"
+                xmlns="www.w3.org"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567l-.15 1.05a8.961 8.961 0 00-1.455.603l-1.002-.436c-.846-.367-1.822-.05-2.296.77l-1.13 1.958a1.875 1.875 0 00.442 2.332l.83.674c-.035.242-.055.488-.055.738s.02.496.055.738l-.83.674a1.875 1.875 0 00-.442 2.332l1.13 1.958c.474.821 1.45 1.137 2.296.77l1.002-.436c.452.26.94.463 1.455.603l.15 1.05c.151.904.933 1.567 1.85 1.567h2.26c.917 0 1.699-.663 1.85-1.567l.15-1.05a8.961 8.961 0 001.455-.603l1.002.436c.846.367 1.822.05 2.296-.77l1.13-1.958a1.875 1.875 0 00-.442-2.332l-.83-.674c.035-.242.055-.488.055-.738s-.02-.496-.055-.738l.83-.674a1.875 1.875 0 00.442-2.332l-1.13-1.958c-.474-.821-1.45-1.137-2.296-.77l-1.002.436a8.961 8.961 0 00-1.455-.603l-.15-1.05a1.875 1.875 0 00-1.85-1.567h-2.26zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"
+                />
+              </svg>
+            </div>
+
+            <h3 class="skill-title">Tools & Workflow</h3>
+
+            <p class="skill-desc">
+              Following structured development workflows with version control,
+              API testing, and collaborative engineering practices.
+            </p>
+
+            <div class="skill-tags">
+              <span>Git</span>
+              <span>GitHub</span>
+              <span>REST APIs</span>
+              <span>Postman</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESS TIMELINE ================= -->
+    <section id="process" class="py-32 bg-panel">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Heading -->
+        <div class="max-w-2xl mb-20">
+          <p
+            class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
+          >
+            Process
+          </p>
+          <h2 class="text-4xl font-heading font-semibold leading-tight">
+            How I work
+          </h2>
+          <p class="mt-4 text-gray-400">
+            A structured and transparent workflow that keeps projects
+            predictable, efficient, and aligned with business goals.
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-wrapper">
+          <!-- Vertical line -->
+          <div class="timeline-line"></div>
+
+          <!-- Item 1 -->
+          <div class="timeline-item">
+            <div
+              class="timeline-dot mx-auto"
+              data-tip="Understanding goals & constraints"
+            ></div>
+            <div class="timeline-card">
+              <h3>Discovery</h3>
+              <p>
+                We discuss goals, requirements, and constraints to clearly
+                define the scope and expectations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item">
+            <div
+              class="timeline-dot"
+              data-tip="Tech stack & system planning"
+            ></div>
+            <div class="timeline-card">
+              <h3>Planning</h3>
+              <p>
+                I plan the architecture, choose the right technologies, and
+                define milestones for delivery.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <h3>Design & Development</h3>
+              <p>
+                Building the interface and core logic with clean, scalable, and
+                performance-focused code.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline-item">
+            <div class="timeline-dot" data-tip="Validation & refinement"></div>
+            <div class="timeline-card">
+              <h3>Testing</h3>
+              <p>
+                Thorough testing, bug fixing, and refinement to ensure
+                reliability and quality.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <h3>Delivery</h3>
+              <p>
+                Final deployment, documentation, and support for a smooth
+                handover.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="py-32 bg-[#0b0f1a]">
+      <div class="max-w-5xl mx-auto px-6">
+        <!-- Heading -->
+        <div class="max-w-2xl mb-16">
+          <p
+            class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
+          >
+            FAQ
+          </p>
+          <h2 class="text-4xl font-heading font-semibold">
+            Frequently asked questions
+          </h2>
+          <p class="mt-4 text-gray-400">
+            Answers to common questions clients ask before starting a project.
+          </p>
+        </div>
+
+        <!-- FAQ List -->
+        <div class="faq-list">
+          <!-- Item -->
+          <div class="faq-item">
+            <button class="faq-question font-semibold">
+              <span>What type of projects do you work on?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                I primarily work on web applications, dashboards, AI-powered
+                tools, and full-stack systems focused on real business use
+                cases.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question font-semibold">
+              <span>Do you work with international clients?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. I work remotely with international clients and communicate
+                clearly through structured updates and documentation.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question font-semibold">
+              <span>How do you handle project communication?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Communication is handled through regular updates, clear
+                milestones, and async-friendly tools to ensure transparency and
+                efficiency.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question font-semibold">
+              <span>Do you provide support after delivery?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. I provide post-delivery support to fix issues, guide
+                deployment, and ensure a smooth handover.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question font-semibold">
+              <span>How do you price your work?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Pricing is based on project scope, complexity, and timeline.
+                After understanding requirements, I provide a clear estimate.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="py-32 bg-[#0b0f1a]">
+      <div class="max-w-6xl mx-auto px-5">
+        <!-- Heading -->
+        <div class="mb-16 max-w-2xl">
+          <p
+            class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
+          >
+            Contact
+          </p>
+          <h2 class="text-4xl font-heading font-semibold">
+            Let’s work together
+          </h2>
+          <p class="mt-4 text-gray-400">
+            Have a project or idea? Tell me about it and I’ll get back to you.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10">
+          <!-- ================= FORM ================= -->
+          <form
+            action="https://formspree.io/f/mblpvbwa"
+            method="POST"
+            class="contact-card"
+          >
+            <label for="name">YOUR NAME <span>*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="John Doe"
+            />
+
+            <label for="email">EMAIL ADDRESS <span>*</span></label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              placeholder="john@email.com"
+              pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+            />
+
+            <label for="phone">MOBILE NUMBER</label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              placeholder="+91 98765 43210"
+              pattern="^[0-9+ ]{8,15}$"
+            />
+
+            <label for="time">PREFERRED CONTACT TIME <span>*</span></label>
+            <select id="time" name="contact_time" required>
+              <option value="">Select</option>
+              <option>Anytime</option>
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+            </select>
+
+            <label for="message">MESSAGE <span>*</span></label>
+            <textarea
+              name="message"
+              id="message"
+              required
+              placeholder="Briefly describe your requirement..."
+            ></textarea>
+
+            <button class="send-btn">Send message →</button>
+          </form>
+
+          <!-- ================= INFO ================= -->
+          <div class="space-y-6">
+            <!-- Contact links -->
+            <div class="contact-card space-y-4">
+              <p class="text-sm text-gray-400 my-3 hover:text-violet1">
+                Get in touch
+              </p>
+              <a href="tel:+917904889179" class="contact-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                  <path
+                    d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2
+       a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57
+       a1 1 0 011 1V21a1 1 0 01-1 1
+       C10.07 22 2 13.93 2 4
+       a1 1 0 011-1h3.5
+       a1 1 0 011 1c0 1.25.2 2.46.57 3.59
+       a1 1 0 01-.25 1.01z"
+                  />
+                </svg>
+
+                <span>+91 79048 89179</span>
+              </a>
+              <a
+                href="https://wa.me/917904889179?text=Hello%20Arif,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
+                target="_blank"
+                class="contact-link"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                  xmlns="www.w3.org"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.012 2c-5.508 0-9.987 4.479-9.987 9.987 0 1.763.46 3.42 1.262 4.86L2 22l5.314-1.395a9.917 9.917 0 004.698 1.186h.005c5.507 0 9.986-4.479 9.986-9.987 0-2.67-1.04-5.18-2.924-7.065A9.925 9.925 0 0012.012 2zm5.47 14.02c-.3.84-1.502 1.532-2.07 1.637-.53.099-1.214.162-3.642-.84-3.08-1.268-5.07-4.401-5.223-4.604-.153-.203-1.222-1.626-1.222-3.1 0-1.474.773-2.197 1.048-2.494.275-.297.6-.372.8-.372l.574.005c.182.008.423-.069.664.512.248.599.847 2.07.92 2.219.074.149.123.322.025.52-.099.198-.149.322-.297.496-.149.173-.313.387-.446.52-.149.148-.305.31-.132.61.174.298.773 1.275 1.66 2.065.14.124.96.86 2.078 1.347.347.151.554.126.76-.112.207-.238.892-1.04 1.132-1.399.24-.359.48-.298.81-.174.33.124 2.096 1.026 2.458 1.211.362.185.603.275.69.424.088.148.088.86-.213 1.7z"
+                  />
+                </svg>
+
+                <span>Chat on WhatsApp</span>
+              </a>
+              <a href="mailto:sheikwebstudio@gmail.com" class="contact-link">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                  xmlns="www.w3.org"
+                >
+                  <path
+                    d="M1.5 4.5A2.25 2.25 0 013.75 2.25h16.5A2.25 2.25 0 0122.5 4.5v15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 19.5v-15zm16.5 1.125L12 11.25 4.5 5.625V17.25h15V5.625zM12 9.75l7.5-4.875H4.5l7.5 4.875z"
+                  />
+                </svg>
+                <span>sheikwebstudio@gmail.com</span>
+              </a>
+              <div class="contact-link">
+                <!-- location svg -->
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                  xmlns="www.w3.org"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 2C8.13401 2 5 5.13401 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13401 15.866 2 12 2ZM7 9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9C17 11.7614 14.7614 14 12 14C9.23858 14 7 11.7614 7 9Z"
+                  />
+                </svg>
+                <span>Tenkasi, Tamil Nadu, India</span>
+              </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-box">
+              <iframe
+                src="https://www.google.com/maps?q=Tenkasi,Tamil%20Nadu,India&output=embed"
+                loading="lazy"
+              ></iframe>
+            </div>
+
+            <!-- Social -->
+            <div class="contact-card">
+              <p class="text-sm text-gray-400 mb-3">Follow me</p>
+              <div class="flex gap-3 flex-wrap">
+                <a class="social-btn" href="https://instagram.com/smarif_4705" aria-label="Instagram">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="w-5 h-5"
+                    xmlns="www.w3.org"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.065.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.01 9.283 2 12 2zm0 1.8c-2.67 0-2.987.01-4.042.059-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.048 1.055-.058 1.371-.058 4.042s.01 2.987.058 4.042c.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.042.058s2.987-.01 4.042-.058c.975-.045 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.371.058-4.042s-.01-2.987-.058-4.042c-.045-.975-.207-1.504-.344-1.857-.182-.467-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.882-.3-1.857-.344-1.055-.048-1.371-.059-4.042-.059zM12 6.865A5.135 5.135 0 1 1 12 17.135 5.135 5.135 0 0 1 12 6.865zm0 1.8a3.335 3.335 0 1 0 0 6.67 3.335 3.335 0 0 0 0-6.67zM17.34 5.46a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"
+                    />
+                  </svg>
+                </a>
+                <a href="https://github.com/SHEIK4705" class="social-btn" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483
+      0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466
+      -.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032
+      .892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338
+      -2.22-.253-4.555-1.113-4.555-4.951
+      0-1.093.39-1.988 1.029-2.688
+      -.103-.253-.446-1.27.098-2.646
+      0 0 .84-.27 2.75 1.026
+      A9.564 9.564 0 0112 6.844
+      a9.56 9.56 0 012.504.337
+      c1.909-1.296 2.747-1.026 2.747-1.026
+      .546 1.376.202 2.393.1 2.646
+      .64.7 1.028 1.595 1.028 2.688
+      0 3.848-2.339 4.695-4.566 4.944
+      .359.31.678.92.678 1.855
+      0 1.338-.012 2.419-.012 2.747
+      0 .268.18.58.688.482
+      A10.02 10.02 0 0022 12.017
+      C22 6.484 17.523 2 12 2z"
+                    />
+                  </svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/sheik-mohammed-arif-a-3b3036327" class="social-btn" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                    <path
+                      d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5
+        1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8h4.56v14H.22zM8.34 8h4.37v1.92h.06
+        c.61-1.16 2.1-2.38 4.32-2.38
+        4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.62
+        c0-1.58-.03-3.62-2.21-3.62
+        -2.21 0-2.55 1.73-2.55 3.51V22H8.34z"
+                    />
+                  </svg>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/917904889179?text=Hello%20Arif,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." class="social-btn" aria-label="WhatsApp">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="w-5 h-5"
+                    xmlns="www.w3.org"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M12.012 2c-5.508 0-9.987 4.479-9.987 9.987 0 1.763.46 3.42 1.262 4.86L2 22l5.314-1.395a9.917 9.917 0 004.698 1.186h.005c5.507 0 9.986-4.479 9.986-9.987 0-2.67-1.04-5.18-2.924-7.065A9.925 9.925 0 0012.012 2zm5.47 14.02c-.3.84-1.502 1.532-2.07 1.637-.53.099-1.214.162-3.642-.84-3.08-1.268-5.07-4.401-5.223-4.604-.153-.203-1.222-1.626-1.222-3.1 0-1.474.773-2.197 1.048-2.494.275-.297.6-.372.8-.372l.574.005c.182.008.423-.069.664.512.248.599.847 2.07.92 2.219.074.149.123.322.025.52-.099.198-.149.322-.297.496-.149.173-.313.387-.446.52-.149.148-.305.31-.132.61.174.298.773 1.275 1.66 2.065.14.124.96.86 2.078 1.347.347.151.554.126.76-.112.207-.238.892-1.04 1.132-1.399.24-.359.48-.298.81-.174.33.124 2.096 1.026 2.458 1.211.362.185.603.275.69.424.088.148.088.86-.213 1.7z"
+                    />
+                  </svg>
+                </a>
+
+                <!-- Mail -->
+                <a href="mailto:sheikwebstudio@gmail.com" class="social-btn" aria-label="Mail">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="w-5 h-5"
+                    xmlns="www.w3.org"
+                  >
+                    <path
+                      d="M1.5 4.5A2.25 2.25 0 013.75 2.25h16.5A2.25 2.25 0 0122.5 4.5v15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 19.5v-15zm16.5 1.125L12 11.25 4.5 5.625V17.25h15V5.625zM12 9.75l7.5-4.875H4.5l7.5 4.875z"
+                    />
+                  </svg>
+                </a>
+                <a class="social-btn" href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 508.02 508.02"
+                    class="w-7 h-7"
+                  >
+                    <path
+                      fill="currentcolor"
+                      d="M345.87,207.66h-123V199.6c0-15.83,15.83-16.13,23.89-16.13
+    9.25,0,13.44.9,13.44.9v-43.6a155.21,155.21,0,0,0-19.71-1.19
+    c-25.68,0-73.16,7.16-73.16,61.51V208h-22.4v40.31h22.4v85.1
+    h-20.9v40.31H247.34V333.37H222.85v-85.1H290v85.1H269.13v40.31
+    h97.65V333.37H345.87Z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- scroll to top button -->
+    <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+    <!-- ================= FOOTER ================= -->
+    <footer
+      id="footer"
+      class="bg-[#0b0f1a] border-t border-white/10 max-w-6xl mx-auto"
+    >
+      <div
+        class="px-5 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+      >
+        <!-- Brand / copyright -->
+        <div>
+          <h3 class="text-lg font-semibold text-white">
+            Arif<span class="text-violet-400">.</span>
+          </h3>
+          <p class="mt-2 text-sm text-gray-400 max-w-xs">
+            Designing and building clean, reliable, and scalable web
+            applications.
+          </p>
+        </div>
+
+        <!-- Footer navigation -->
+        <nav class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+          <a href="#about" class="footer-link">About</a>
+          <a href="#services" class="footer-link">Services</a>
+          <a href="#projects" class="footer-link">Projects</a>
+          <a href="#skills" class="footer-link">Skills</a>
+          <a href="#contact" class="footer-link">Contact</a>
+        </nav>
+
+        <!-- Social links -->
+        <div class="flex gap-3">
+          <!-- instagram -->
+          <a href="https://instagram.com/smarif_4705" class="footer-social" aria-label="Instagram">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5"
+              xmlns="www.w3.org"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.065.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.01 9.283 2 12 2zm0 1.8c-2.67 0-2.987.01-4.042.059-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.048 1.055-.058 1.371-.058 4.042s.01 2.987.058 4.042c.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.042.058s2.987-.01 4.042-.058c.975-.045 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.371.058-4.042s-.01-2.987-.058-4.042c-.045-.975-.207-1.504-.344-1.857-.182-.467-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.882-.3-1.857-.344-1.055-.048-1.371-.059-4.042-.059zM12 6.865A5.135 5.135 0 1 1 12 17.135 5.135 5.135 0 0 1 12 6.865zm0 1.8a3.335 3.335 0 1 0 0 6.67 3.335 3.335 0 0 0 0-6.67zM17.34 5.46a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"
+              />
+            </svg>
+          </a>
+          <!-- Linked in -->
+          <a href="https://www.linkedin.com/in/sheik-mohammed-arif-a-3b3036327" class="footer-social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+              <path
+                d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5
+        1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8h4.56v14H.22zM8.34 8h4.37v1.92h.06
+        c.61-1.16 2.1-2.38 4.32-2.38
+        4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.62
+        c0-1.58-.03-3.62-2.21-3.62
+        -2.21 0-2.55 1.73-2.55 3.51V22H8.34z"
+              />
+            </svg>
+          </a>
+          <!-- github -->
+          <a href="https://github.com/SHEIK4705" class="footer-social" aria-label="GitHub"
+            ><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483
+      0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466
+      -.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032
+      .892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338
+      -2.22-.253-4.555-1.113-4.555-4.951
+      0-1.093.39-1.988 1.029-2.688
+      -.103-.253-.446-1.27.098-2.646
+      0 0 .84-.27 2.75 1.026
+      A9.564 9.564 0 0112 6.844
+      a9.56 9.56 0 012.504.337
+      c1.909-1.296 2.747-1.026 2.747-1.026
+      .546 1.376.202 2.393.1 2.646
+      .64.7 1.028 1.595 1.028 2.688
+      0 3.848-2.339 4.695-4.566 4.944
+      .359.31.678.92.678 1.855
+      0 1.338-.012 2.419-.012 2.747
+      0 .268.18.58.688.482
+      A10.02 10.02 0 0022 12.017
+      C22 6.484 17.523 2 12 2z"
+              />
+            </svg>
+          </a>
+          <!-- mail -->
+          <a href="mailto:sheikwebstudio@gmail.com" class="footer-social" aria-label="Mail">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.5 4.5A2.25 2.25 0 013.75 2.25h16.5A2.25 2.25 0 0122.5 4.5v15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 19.5v-15zm16.5 1.125L12 11.25 4.5 5.625V17.25h15V5.625zM12 9.75l7.5-4.875H4.5l7.5 4.875z"
+              />
+            </svg>
+          </a>
+          <!-- Whatsapp -->
+          <a href="https://wa.me/917904889179?text=Hello%20Arif,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." class="footer-social" aria-label="WhatsApp">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5"
+              xmlns="www.w3.org"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.012 2c-5.508 0-9.987 4.479-9.987 9.987 0 1.763.46 3.42 1.262 4.86L2 22l5.314-1.395a9.917 9.917 0 004.698 1.186h.005c5.507 0 9.986-4.479 9.986-9.987 0-2.67-1.04-5.18-2.924-7.065A9.925 9.925 0 0012.012 2zm5.47 14.02c-.3.84-1.502 1.532-2.07 1.637-.53.099-1.214.162-3.642-.84-3.08-1.268-5.07-4.401-5.223-4.604-.153-.203-1.222-1.626-1.222-3.1 0-1.474.773-2.197 1.048-2.494.275-.297.6-.372.8-.372l.574.005c.182.008.423-.069.664.512.248.599.847 2.07.92 2.219.074.149.123.322.025.52-.099.198-.149.322-.297.496-.149.173-.313.387-.446.52-.149.148-.305.31-.132.61.174.298.773 1.275 1.66 2.065.14.124.96.86 2.078 1.347.347.151.554.126.76-.112.207-.238.892-1.04 1.132-1.399.24-.359.48-.298.81-.174.33.124 2.096 1.026 2.458 1.211.362.185.603.275.69.424.088.148.088.86-.213 1.7z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- copyright -->
+      <p class="my-3 mx-auto text-center text-sm text-gray-500">
+        © <span id="year"></span> Arif. All rights reserved.
+      </p>
+    </footer>
+
+    <!-- ================= APP SCRIPT ================= -->
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
