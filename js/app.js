@@ -32,53 +32,75 @@ class Particle {
   constructor() {
     this.baseX = Math.random() * w;
     this.baseY = Math.random() * h;
+
     this.x = this.baseX;
     this.y = this.baseY;
-    this.r = Math.random() * 1.8 + 0.6;
-    this.opacity = Math.random() * 0.35 + 0.1;
-    this.speed = Math.random() * 0.02 + 0.01;
+
+    this.r = Math.random() * 2.2 + 0.8;
+
+    // brighter & more visible
+    this.opacity = Math.random() * 0.45 + 0.1;
+
+    // gentle vertical drift
+    this.speedY = Math.random() * 0.05 + 0.02;
+
+    // subtle horizontal drift
+    this.speedX = (Math.random() - 0.5) * 0.03;
   }
 
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(167,139,250,${this.opacity})`;
+
+    // slightly brighter violet
+    ctx.fillStyle = `rgba(179, 153, 255,${this.opacity})`;
     ctx.fill();
   }
 
   update() {
-    // Gentle floating
-    this.y += this.speed;
-    if (this.y > h) this.y = 0;
+    /* Natural slow drift */
+    this.y += this.speedY;
+    this.x += this.speedX;
 
-    // Subtle mouse attraction
-    if (mouse.x && mouse.y) {
+    // wrap around screen
+    if (this.y > h + 20) this.y = -20;
+    if (this.x > w + 20) this.x = -20;
+    if (this.x < -20) this.x = w + 20;
+
+    /* Mouse interaction (still subtle) */
+    if (mouse.x !== null && mouse.y !== null) {
       const dx = mouse.x - this.x;
       const dy = mouse.y - this.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < 140) {
-        this.x -= dx * 0.002;
-        this.y -= dy * 0.002;
+        this.x -= dx * 0.0025;
+        this.y -= dy * 0.0025;
       }
     }
 
-    // Ease back to base
-    this.x += (this.baseX - this.x) * 0.002;
-    this.y += (this.baseY - this.y) * 0.002;
+    /* Ease back slightly to original lane */
+    this.x += (this.baseX - this.x) * 0.0008;
+    this.y += (this.baseY - this.y) * 0.0008;
 
     this.draw();
   }
 }
 
 // Init
-function initParticles(count = 90) {
+function initParticles(count = 120) {
   particles = [];
   for (let i = 0; i < count; i++) {
     particles.push(new Particle());
   }
 }
 initParticles();
+// Slowly spawn new particles (controlled)
+setInterval(() => {
+  if (particles.length < 160) {
+    particles.push(new Particle());
+  }
+}, 2500);
 
 // Animate
 function animate() {
@@ -175,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Use autoAlpha for opacity and visibility
     gsap.set(["#hero .cta a", ".timeline-dot"], { autoAlpha: 0 });
 
-
     // 2. HERO SECTION (FIXED)
     const heroTl = gsap.timeline({
       defaults: { duration: 0.9, ease: "power3.out" },
@@ -187,25 +208,39 @@ document.addEventListener("DOMContentLoaded", () => {
         { autoAlpha: 0, y: 16, stagger: 0.2 },
         "-=0.7"
       )
-      .to( // Use a .to() tween to ensure visibility
+      .to(
+        // Use a .to() tween to ensure visibility
         "#hero .cta a",
         { autoAlpha: 1, scale: 1, stagger: 0.15 },
         "-=0.6"
       );
 
     // 3. NAVBAR
-    gsap.from("header", {
-      y: -100,
-      autoAlpha: 0,
-      duration: 1,
-      ease: "power3.out",
-      delay: 0.5,
-    });
+    // gsap.from("header", {
+    //   y: -100,
+    //   autoAlpha: 0,
+    //   duration: 1,
+    //   ease: "power3.out",
+    //   delay: 0.5,
+    // });
 
     // 4. ABOUT SECTION
-    gsap.from("#about h2", { scrollTrigger: { ...defaultScrollTrigger, trigger: "#about h2" }, autoAlpha: 0, y: 20 });
-    gsap.from("#about .img-border", { scrollTrigger: { ...defaultScrollTrigger, trigger: "#about .img-border" }, autoAlpha: 0, scale: 0.96 });
-    gsap.from("#about .space-y-6 > *", { scrollTrigger: { ...defaultScrollTrigger, trigger: "#about .space-y-6" }, autoAlpha: 0, y: 15, stagger: 0.2 });
+    gsap.from("#about h2", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "#about h2" },
+      autoAlpha: 0,
+      y: 20,
+    });
+    gsap.from("#about .img-border", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "#about .img-border" },
+      autoAlpha: 0,
+      scale: 0.96,
+    });
+    gsap.from("#about .space-y-6 > *", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "#about .space-y-6" },
+      autoAlpha: 0,
+      y: 15,
+      stagger: 0.2,
+    });
 
     // 4.5 CV + CONTACT LINKS SECTION (NEW)
     gsap.from("#links .container > *", {
@@ -218,14 +253,25 @@ document.addEventListener("DOMContentLoaded", () => {
       stagger: 0.2,
     });
 
-
     // 5. SERVICES SECTION
-    gsap.from("#services h2", { scrollTrigger: { ...defaultScrollTrigger, trigger: "#services h2" }, autoAlpha: 0, y: 20 });
-    gsap.from(".service-card", { scrollTrigger: { ...defaultScrollTrigger, trigger: ".service-card" }, autoAlpha: 0, y: 30, stagger: 0.15 });
-
+    gsap.from("#services h2", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "#services h2" },
+      autoAlpha: 0,
+      y: 20,
+    });
+    gsap.from(".service-card", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: ".service-card" },
+      autoAlpha: 0,
+      y: 30,
+      stagger: 0.15,
+    });
 
     // 6. PROJECTS SECTION (FIXED - CSS CONFLICT REMOVED)
-    gsap.from("#projects h2", { scrollTrigger: { ...defaultScrollTrigger, trigger: "#projects h2" }, autoAlpha: 0, y: 20 });
+    gsap.from("#projects h2", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "#projects h2" },
+      autoAlpha: 0,
+      y: 20,
+    });
     gsap.from(".project-card", {
       scrollTrigger: {
         ...defaultScrollTrigger,
@@ -239,7 +285,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 7. SKILLS SECTION (FIXED - CSS CONFLICT REMOVED)
-    gsap.from("#skills h2", { scrollTrigger: { ...defaultScrollTrigger, trigger: "#skills h2" }, autoAlpha: 0, y: 20 });
+    gsap.from("#skills h2", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "#skills h2" },
+      autoAlpha: 0,
+      y: 20,
+    });
     gsap.from(".skill-card", {
       scrollTrigger: {
         ...defaultScrollTrigger,
@@ -311,7 +361,10 @@ document.addEventListener("DOMContentLoaded", () => {
               duration: 0.4,
               ease: "power3.inOut",
             });
-            gsap.to(otherItem.querySelector(".faq-icon"), { rotation: 0, duration: 0.4 });
+            gsap.to(otherItem.querySelector(".faq-icon"), {
+              rotation: 0,
+              duration: 0.4,
+            });
           }
         });
 
@@ -340,8 +393,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 10. CONTACT SECTION
-    gsap.from("#contact h2", { scrollTrigger: { ...defaultScrollTrigger, trigger: "#contact h2" }, autoAlpha: 0, y: 20 });
-    gsap.from("form.contact-card", { scrollTrigger: { ...defaultScrollTrigger, trigger: "form.contact-card" }, autoAlpha: 0, x: -50, duration: 1 });
+    gsap.from("#contact h2", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "#contact h2" },
+      autoAlpha: 0,
+      y: 20,
+    });
+    gsap.from("form.contact-card", {
+      scrollTrigger: { ...defaultScrollTrigger, trigger: "form.contact-card" },
+      autoAlpha: 0,
+      x: -50,
+      duration: 1,
+    });
     gsap.from(".contact-card + .space-y-6", {
       scrollTrigger: {
         ...defaultScrollTrigger,
@@ -373,3 +435,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+/* ===================================================== */

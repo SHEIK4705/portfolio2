@@ -1,5 +1,25 @@
+canvas {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+canvas::-webkit-scrollbar-thumb {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  display: none;
+  /* Customize default scrollbar width */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
 }
 
 body {
@@ -149,6 +169,7 @@ header a.font-heading:hover {
 .loader {
   display: flex;
   align-items: center;
+  text-align: left;
   font-weight: 500;
   color: #9ca3af;
 }
