@@ -806,6 +806,20 @@ header a.font-heading:hover {
   border-color: #8b5cf6;
 }
 
+select {
+  border-radius: 5px;
+}
+
+select option {
+  background: #11162a;
+  color: #e5e7eb;
+  padding: 10px;
+}
+
+select option:hover {
+  background: #3f4b7d;
+}
+
 .send-btn {
   margin-top: 1rem;
   width: 100%;

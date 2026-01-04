@@ -50,9 +50,8 @@
       };
     </script>
 
-    <!-- GSAP -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
 
   <body class="font-body antialiased overflow-x-hidden">
@@ -134,18 +133,10 @@
       id="hero"
       class="relative min-h-screen flex items-center pt-24 overflow-hidden md:justify-center"
     >
-      <!-- HERO CANVAS -->
-      <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0">
-      </canvas>
-
-      <!-- Neural Pulse Network -->
-      <!-- use lg:block if you use this graphics -->
-      <!-- <canvas
-        id="neuro-canvas"
-        class="hidden absolute right-0 top-[10%] h-[60%] w-[40%] m-24 z-20 cursor-grab active:cursor-grabbing"
-      >
-      </canvas> -->
-
+      <canvas
+        id="hero-canvas"
+        class="absolute inset-0 w-full h-full z-0"
+      ></canvas>
       <!-- Glow -->
       <div
         class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-violet2/20 blur-[180px] rounded-full"
@@ -155,6 +146,7 @@
       ></div>
       <div
         class="container relative z-10 max-w-7xl text-left md:text-center md:flex md:flex-col md:items-center"
+        data-aos="fade-up"
       >
         <h1
           class="font-heading font-semibold leading-[1.05] text-[clamp(3.5rem,7vw,6.5rem)]"
@@ -163,7 +155,7 @@
         </h1>
 
         <!-- Rotating words (SCALED) -->
-        <div class="mt-6">
+        <div class="mt-6" data-aos="fade-up" data-aos-delay="200">
           <div class="loader text-3xl md:text-4xl h-[56px]">
             <p class="mr-2">I build</p>
             <div class="words h-[40px]">
@@ -179,6 +171,8 @@
 
         <p
           class="mt-10 max-w-xl text-muted md:text-xl leading-relaxed md:text-center"
+          data-aos="fade-up"
+          data-aos-delay="400"
         >
           I help startups and businesses design and develop reliable web
           applications with clarity and care.
@@ -187,6 +181,8 @@
         <!-- ================= HERO CTA ================= -->
         <div
           class="mt-14 cta flex flex-wrap gap-6 items-center md:justify-center"
+          data-aos="fade-up"
+          data-aos-delay="600"
         >
           <!-- PRIMARY CTA -->
           <a
@@ -213,7 +209,7 @@
 
           <!-- SECONDARY CTA -->
           <a
-            href="#"
+            href="#projects"
             class="relative inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/15 text-muted transition-all duration-300 hover:border-violet1 hover:text-text"
           >
             View work
@@ -224,7 +220,7 @@
 
     <!-- ================= ABOUT ================= -->
     <section id="about" class="py-20 container max-w-6xl">
-      <div class="max-w-3xl my-16">
+      <div class="max-w-3xl my-16" data-aos="fade-right">
         <p
           class="font-mono text-xs uppercase tracking-widest text-violet1 mb-4"
         >
@@ -239,7 +235,7 @@
       </div>
       <div class="grid md:grid-cols-2 gap-20 items-start">
         <!-- LEFT -->
-        <div>
+        <div data-aos="zoom-in">
           <img
             src="images/profile2.jpg"
             alt="Sheik Mohammed Arif - Web Developer"
@@ -248,7 +244,10 @@
         </div>
 
         <!-- RIGHT -->
-        <div class="space-y-6 text-lg text-muted font-body leading-relaxed">
+        <div
+          class="space-y-6 text-lg text-muted font-body leading-relaxed"
+          data-aos="fade-left"
+        >
           <p
             class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
           >
@@ -274,7 +273,10 @@
 
     <!-- ================= CV + CONTACT LINKS ================= -->
     <section id="links" class="py-20 bg-panel">
-      <div class="container max-w-4xl text-center space-y-10">
+      <div
+        class="container max-w-4xl text-center space-y-10"
+        data-aos="fade-up"
+      >
         <!-- Text -->
         <div>
           <p
@@ -467,7 +469,7 @@
     <section id="services" class="py-20">
       <div class="container max-w-6xl">
         <!-- Heading -->
-        <div class="mb-20 max-w-3xl">
+        <div class="mb-20 max-w-3xl" data-aos="fade-right">
           <p
             class="font-mono text-xs uppercase tracking-widest text-violet1 mb-4"
           >
@@ -489,7 +491,7 @@
         <!-- Service Cards -->
         <div class="grid md:grid-cols-2 gap-10">
           <!-- Service 1 -->
-          <div class="service-card relative overflow-hidden">
+          <div class="service-card relative overflow-hidden" data-aos="fade-up">
             <!-- Bottom gradient glow -->
             <div class="service-glow"></div>
 
@@ -506,7 +508,11 @@
           </div>
 
           <!-- Service 2 -->
-          <div class="service-card relative overflow-hidden">
+          <div
+            class="service-card relative overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <!-- Bottom gradient glow -->
             <div class="service-glow"></div>
             <!-- Content -->
@@ -522,7 +528,11 @@
           </div>
 
           <!-- Service 3 -->
-          <div class="service-card relative overflow-hidden">
+          <div
+            class="service-card relative overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <!-- Bottom gradient glow -->
             <div class="service-glow"></div>
             <!-- Content -->
@@ -538,7 +548,11 @@
           </div>
 
           <!-- Service 4 -->
-          <div class="service-card relative overflow-hidden">
+          <div
+            class="service-card relative overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
             <!-- Bottom gradient glow -->
             <div class="service-glow"></div>
 
@@ -561,7 +575,7 @@
     <section id="projects" class="py-20 bg-[#0b0f1a]">
       <div class="max-w-6xl mx-auto px-6">
         <!-- Section Header -->
-        <div class="max-w-2xl mb-20">
+        <div class="max-w-2xl mb-20" data-aos="fade-right">
           <p
             class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
           >
@@ -579,7 +593,7 @@
         <!-- Project List -->
         <div class="grid md:grid-cols-2 gap-10">
           <!-- GrammarBase-->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up">
             <img src="./images/GB_img.png" alt="GrammarBase Project" />
             <div class="project-body">
               <h3>GrammarBase – AI Learning Platform</h3>
@@ -603,7 +617,7 @@
           </article>
 
           <!-- Data Analysis -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up" data-aos-delay="200">
             <img src="./images/dashboard.png" alt="Data Analysis Dashboard" />
             <div class="project-body">
               <h3>Data Analysis Dashboard</h3>
@@ -627,7 +641,7 @@
           </article>
 
           <!-- AI study Assistant -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up" data-aos-delay="300">
             <img src="./images/ai_assist.png" alt="AI Study Assistant" />
             <div class="project-body">
               <h3>AI Study Assistant</h3>
@@ -652,7 +666,7 @@
           </article>
 
           <!-- Truthlense -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up" data-aos-delay="400">
             <img src="./images/fnd1.png" alt="TruthLens ML Project" />
             <div class="project-body">
               <h3>TruthLens – Fake News Detection (ML)</h3>
@@ -675,7 +689,7 @@
           </article>
 
           <!-- Yaar solutions -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up">
             <img src="./images/yaar.png" alt="YAAR Solutions" />
             <div class="project-body">
               <h3>YAAR – Entrepreneur Development Platform</h3>
@@ -698,7 +712,7 @@
           </article>
 
           <!-- NoteMate -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up" data-aos-delay="200">
             <img src="./images/NM_img.png" alt="NoteMate" />
             <div class="project-body">
               <h3>NoteMate – Academic Collaboration Platform</h3>
@@ -723,7 +737,7 @@
           </article>
 
           <!-- AC Service -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up" data-aos-delay="300">
             <img src="./images/airosys_img.png" alt="AC Service Website" />
             <div class="project-body">
               <h3>AC Service – Business Website</h3>
@@ -748,7 +762,7 @@
           </article>
 
           <!-- MediCore - Hospital Management Website -->
-          <article class="project-card">
+          <article class="project-card" data-aos="fade-up" data-aos-delay="400">
             <img
               src="./images/medicare.png"
               alt="MediCore Hospital Management Platform"
@@ -783,7 +797,7 @@
     <section id="skills" class="py-20 bg-[#0b0f1a]">
       <div class="max-w-6xl mx-auto px-6">
         <!-- Section Header -->
-        <div class="max-w-2xl mb-20">
+        <div class="max-w-2xl mb-20" data-aos="fade-right">
           <p
             class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
           >
@@ -806,7 +820,7 @@
         <!-- Skills Grid -->
         <div class="grid md:grid-cols-2 gap-12">
           <!-- Frontend -->
-          <div class="skill-card">
+          <div class="skill-card" data-aos="fade-up">
             <div class="skill-icon">
               <svg
                 viewBox="0 0 24 24"
@@ -840,7 +854,7 @@
           </div>
 
           <!-- Backend -->
-          <div class="skill-card">
+          <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
             <div class="skill-icon">
               <svg
                 viewBox="0 0 24 24"
@@ -873,7 +887,7 @@
           </div>
 
           <!-- AI / ML -->
-          <div class="skill-card">
+          <div class="skill-card" data-aos="fade-up">
             <div class="skill-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -980,7 +994,7 @@
           </div>
 
           <!-- Tools -->
-          <div class="skill-card">
+          <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
             <div class="skill-icon">
               <svg
                 viewBox="0 0 24 24"
@@ -1018,7 +1032,7 @@
     <section id="process" class="py-20 bg-panel">
       <div class="max-w-6xl mx-auto px-6">
         <!-- Heading -->
-        <div class="max-w-2xl mb-20">
+        <div class="max-w-2xl mb-20" data-aos="fade-right">
           <p
             class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
           >
@@ -1039,7 +1053,7 @@
           <div class="timeline-line"></div>
 
           <!-- Item 1 -->
-          <div class="timeline-item">
+          <div class="timeline-item" data-aos="fade-in">
             <div
               class="timeline-dot mx-auto"
               data-tip="Understanding goals & constraints"
@@ -1054,7 +1068,7 @@
           </div>
 
           <!-- Item 2 -->
-          <div class="timeline-item">
+          <div class="timeline-item" data-aos="fade-in">
             <div
               class="timeline-dot"
               data-tip="Tech stack & system planning"
@@ -1069,7 +1083,7 @@
           </div>
 
           <!-- Item 3 -->
-          <div class="timeline-item">
+          <div class="timeline-item" data-aos="fade-in">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
               <h3>Design & Development</h3>
@@ -1081,7 +1095,7 @@
           </div>
 
           <!-- Item 4 -->
-          <div class="timeline-item">
+          <div class="timeline-item" data-aos="fade-in">
             <div class="timeline-dot" data-tip="Validation & refinement"></div>
             <div class="timeline-card">
               <h3>Testing</h3>
@@ -1093,7 +1107,7 @@
           </div>
 
           <!-- Item 5 -->
-          <div class="timeline-item">
+          <div class="timeline-item" data-aos="fade-in">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
               <h3>Delivery</h3>
@@ -1111,7 +1125,7 @@
     <section id="faq" class="py-20 bg-[#0b0f1a]">
       <div class="max-w-5xl mx-auto px-6">
         <!-- Heading -->
-        <div class="max-w-2xl mb-16">
+        <div class="max-w-2xl mb-16" data-aos="fade-right">
           <p
             class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
           >
@@ -1126,7 +1140,7 @@
         </div>
 
         <!-- FAQ List -->
-        <div class="faq-list">
+        <div class="faq-list" data-aos="fade-up">
           <!-- Item -->
           <div class="faq-item">
             <button class="faq-question font-semibold">
@@ -1204,7 +1218,7 @@
     <section id="contact" class="py-20 bg-[#0b0f1a]">
       <div class="max-w-6xl mx-auto px-5">
         <!-- Heading -->
-        <div class="mb-16 max-w-2xl">
+        <div class="mb-16 max-w-2xl" data-aos="fade-right">
           <p
             class="text-xs font-mono tracking-widest uppercase text-violet-400 mb-3"
           >
@@ -1224,6 +1238,7 @@
             action="https://formspree.io/f/mblpvbwa"
             method="POST"
             class="contact-card"
+            data-aos="fade-right"
           >
             <label for="name">YOUR NAME <span>*</span></label>
             <input
@@ -1250,16 +1265,18 @@
               name="phone"
               id="phone"
               placeholder="+91 98765 43210"
-              pattern="^[0-9+ ]{8,15}$"
+              pattern="^\+[1-9]\d{1,14}$"
             />
 
             <label for="time">PREFERRED CONTACT TIME <span>*</span></label>
             <select id="time" name="contact_time" required>
-              <option value="">Select</option>
-              <option>Anytime</option>
-              <option>Morning</option>
-              <option>Afternoon</option>
-              <option>Evening</option>
+              <option value="" class="text-gray-400" disabled selected>
+                Select
+              </option>
+              <option value="anytime">Anytime</option>
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
             </select>
 
             <label for="message">MESSAGE <span>*</span></label>
@@ -1274,7 +1291,7 @@
           </form>
 
           <!-- ================= INFO ================= -->
-          <div class="space-y-6">
+          <div class="space-y-6" data-aos="fade-left">
             <!-- Contact links -->
             <div class="contact-card space-y-4">
               <p class="text-sm text-gray-400 my-3 hover:text-violet1">
@@ -1493,6 +1510,7 @@
     <footer
       id="footer"
       class="bg-transparent border-t border-white/10 max-w-6xl mx-auto"
+      data-aos="fade-up"
     >
       <div
         class="px-5 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
@@ -1633,248 +1651,12 @@
     <!-- ================= APP SCRIPT ================= -->
 
     <script src="js/app.js"></script>
-
-    <!-- ================= THREE.JS NEURO ANIMATION ================= -->
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      (function () {
-        const canvas = document.getElementById("neuro-canvas");
-        if (!canvas) return;
-
-        // --- CONFIGURATION ---
-        const COLORS = {
-          violet1: 0xa78bfa,
-          violet2: 0x7c3aed,
-        };
-        const NODE_COUNT = 200;
-        const NETWORK_RADIUS = 30;
-        const CONNECT_DISTANCE = 7;
-        const PULSE_MAX = 25; // Fewer pulses for a calmer look
-
-        let scene, camera, renderer, controls;
-        let nodes = [],
-          connections = [],
-          pulses = [];
-
-        // --- SUBTLE SOFT GLOW TEXTURE ---
-        function createGlowTexture() {
-          const fragmentCanvas = document.createElement("canvas");
-          fragmentCanvas.width = 64;
-          fragmentCanvas.height = 64;
-          const context = fragmentCanvas.getContext("2d");
-          const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
-
-          // CHANGE 1: Softer core. No harsh white.
-          // Starts with light violet instead of pure white
-          gradient.addColorStop(0, "rgba(210, 190, 255, 0.8)");
-
-          // Smooth fade to deep violet
-          gradient.addColorStop(0.4, "rgba(124, 58, 237, 0.3)");
-
-          // Fade to transparent
-          gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
-
-          context.fillStyle = gradient;
-          context.fillRect(0, 0, 64, 64);
-          return new THREE.CanvasTexture(fragmentCanvas);
-        }
-        const pulseTexture = createGlowTexture();
-
-        function init() {
-          scene = new THREE.Scene();
-
-          const aspect = canvas.clientWidth / canvas.clientHeight;
-          camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000);
-          camera.position.z = 45;
-
-          renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            antialias: true,
-            alpha: true,
-          });
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-          renderer.outputEncoding = THREE.sRGBEncoding;
-
-          resizeCanvasToDisplaySize();
-
-          controls = new THREE.OrbitControls(camera, renderer.domElement);
-          controls.enableDamping = true;
-          controls.dampingFactor = 0.05;
-          controls.enableZoom = true;
-          controls.autoRotate = true;
-          // CHANGE 2: Slower rotation for the whole system
-          controls.autoRotateSpeed = 0.4;
-          controls.minDistance = 25;
-          controls.maxDistance = 70;
-          controls.enablePan = false;
-
-          const ambientLight = new THREE.AmbientLight(COLORS.violet1, 0.4);
-          scene.add(ambientLight);
-          const pointLight = new THREE.PointLight(COLORS.violet1, 1.2, 150);
-          pointLight.position.set(20, 30, 20);
-          scene.add(pointLight);
-
-          createNetwork();
-          window.addEventListener("resize", resizeCanvasToDisplaySize);
-          animate();
-        }
-
-        function resizeCanvasToDisplaySize() {
-          const width = canvas.clientWidth;
-          const height = canvas.clientHeight;
-          if (canvas.width !== width || canvas.height !== height) {
-            renderer.setSize(width, height, false);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-          }
-        }
-
-        function createNetwork() {
-          const geometry = new THREE.SphereGeometry(0.15, 16, 16);
-          const material = new THREE.MeshPhongMaterial({
-            color: COLORS.violet1,
-            emissive: COLORS.violet2,
-            emissiveIntensity: 0.8, // Reduced node glow
-            shininess: 60,
-            flatShading: false,
-          });
-
-          for (let i = 0; i < NODE_COUNT; i++) {
-            const node = new THREE.Mesh(geometry, material);
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(Math.random() * 2 - 1);
-            const r = NETWORK_RADIUS * (0.8 + Math.random() * 0.4);
-
-            node.position.set(
-              r * Math.sin(phi) * Math.cos(theta),
-              r * Math.sin(phi) * Math.sin(theta),
-              r * Math.cos(phi)
-            );
-
-            node.initialPos = node.position.clone();
-            node.floatOffset = Math.random() * 100;
-            nodes.push(node);
-            scene.add(node);
-          }
-
-          const lineMaterial = new THREE.LineBasicMaterial({
-            color: COLORS.violet1,
-            transparent: true,
-            opacity: 0.08, // Very faint lines
-            blending: THREE.AdditiveBlending,
-          });
-
-          for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-              const dist = nodes[i].position.distanceTo(nodes[j].position);
-              if (dist < CONNECT_DISTANCE) {
-                const lineGeom = new THREE.BufferGeometry().setFromPoints([
-                  nodes[i].position,
-                  nodes[j].position,
-                ]);
-                const line = new THREE.Line(lineGeom, lineMaterial);
-                connections.push({
-                  line,
-                  startNode: nodes[i],
-                  endNode: nodes[j],
-                  distance: dist,
-                });
-                scene.add(line);
-              }
-            }
-          }
-        }
-
-        function createPulse() {
-          if (connections.length === 0) return;
-          const conn =
-            connections[Math.floor(Math.random() * connections.length)];
-
-          const material = new THREE.SpriteMaterial({
-            map: pulseTexture,
-            color: 0xffffff,
-            transparent: true,
-            // CHANGE 3: Lower opacity (was 1.0)
-            opacity: 0.6,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-          });
-
-          const pulse = new THREE.Sprite(material);
-
-          // CHANGE 4: Smaller Size (was 2.5+)
-          const scale = 1.2 + Math.random() * 0.5;
-          pulse.scale.set(scale, scale, scale);
-
-          pulse.connection = conn;
-          pulse.progress = 0;
-
-          // CHANGE 5: Slower Speed (was 0.15)
-          // Divide by distance so longer lines take longer to travel
-          pulse.speed = (0.05 + Math.random() * 0.05) / conn.distance;
-
-          pulses.push(pulse);
-          scene.add(pulse);
-        }
-
-        function animate() {
-          requestAnimationFrame(animate);
-          const time = Date.now() * 0.001;
-
-          nodes.forEach((node) => {
-            node.position.x =
-              node.initialPos.x + Math.sin(time + node.floatOffset) * 0.15;
-            node.position.y =
-              node.initialPos.y +
-              Math.cos(time * 0.9 + node.floatOffset) * 0.15;
-            node.position.z =
-              node.initialPos.z +
-              Math.sin(time * 0.7 + node.floatOffset) * 0.15;
-          });
-
-          connections.forEach((conn) => {
-            const positions = conn.line.geometry.attributes.position.array;
-            positions[0] = conn.startNode.position.x;
-            positions[1] = conn.startNode.position.y;
-            positions[2] = conn.startNode.position.z;
-            positions[3] = conn.endNode.position.x;
-            positions[4] = conn.endNode.position.y;
-            positions[5] = conn.endNode.position.z;
-            conn.line.geometry.attributes.position.needsUpdate = true;
-          });
-
-          if (Math.random() > 0.95 && pulses.length < PULSE_MAX) {
-            createPulse();
-          }
-
-          for (let i = pulses.length - 1; i >= 0; i--) {
-            const p = pulses[i];
-            p.progress += p.speed;
-            if (p.progress >= 1) {
-              scene.remove(p);
-              pulses.splice(i, 1);
-            } else {
-              p.position.lerpVectors(
-                p.connection.startNode.position,
-                p.connection.endNode.position,
-                p.progress
-              );
-              // Fade out gently
-              if (p.progress > 0.8) p.material.opacity = (1 - p.progress) * 3;
-            }
-          }
-
-          controls.update();
-          renderer.render(scene, camera);
-        }
-
-        if (canvas.clientWidth > 0) {
-          init();
-        }
-      })();
-    </script> -->
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
   </body>
 </html>
