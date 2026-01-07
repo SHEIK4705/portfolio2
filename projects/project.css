@@ -1,0 +1,558 @@
+/* =========================================================
+   GLOBAL + RESET (from your file)
+========================================================= */
+body {
+  box-sizing: border-box;
+  background-color: #0d0d16;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main-wrapper {
+  background-color: #0d0d16;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   ANIMATIONS (merged — your versions kept)
+========================================================= */
+.fade-in-up {
+  /* keep the entrance animation but ensure element is visible by default
+     so it doesn't stay hidden if animations are prevented */
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+
+.gradient-text {
+  /* fallback color for browsers without text-clip support */
+  color: #ffffff;
+  background: linear-gradient(135deg, #bda8fb 0%, #7c3aed 100%);
+  background-size: 200% 100%;
+}
+
+/* Only apply text clipping + transparent fill when supported */
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .gradient-text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* animation: shimmer 3s infinite linear; */
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* =========================================================
+   CARDS + HOVER EFFECTS (yours, slightly softened)
+========================================================= */
+.card-hover {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.card-hover::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(167, 139, 250, 0.25) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card-hover:hover::before {
+  opacity: 1;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card-hover {
+  border: 1px solid rgba(175, 148, 254, 0.2);
+}
+
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 22px rgba(139, 92, 246, 0.18),
+    0 0 18px rgba(167, 139, 250, 0.12);
+  border-color: rgba(167, 139, 250, 0.28);
+}
+
+/* =========================================================
+   FLOAT BUTTON EFFECTS
+========================================================= */
+.btn-float {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-float::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-float::before {
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn-float:hover::before {
+  width: 220px;
+  height: 220px;
+}
+.btn-float:hover {
+  transform: translateY(-5px) scale(1.06);
+  box-shadow: 0 10px 28px rgba(167, 139, 250, 0.22),
+    0 0 16px rgba(139, 92, 246, 0.12);
+}
+
+/* =========================================================
+   GLOW
+========================================================= */
+.glow {
+  box-shadow: 0 0 14px rgba(167, 139, 250, 0.32),
+    0 0 28px rgba(139, 92, 246, 0.18);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 26px rgba(167, 139, 250, 0.55),
+      0 0 48px rgba(139, 92, 246, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(167, 139, 250, 0.48),
+      0 0 44px rgba(139, 92, 246, 0.28);
+  }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero-section {
+  padding: 100px 24px 64px;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-family: "Space Grotesk", italic;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.08;
+  margin-bottom: 12px;
+  /* ensure gradient visible and fallback */
+  color: #fff;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up,
+  .gradient-text,
+  .floating,
+  .glow {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Ensure back button and contact CTA are visible */
+#back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 60;
+  color: #a78bfa;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  padding: 8px 12px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+}
+
+.contact-btn {
+  display: inline-block !important;
+  color: #fff;
+  z-index: 50;
+}
+
+.gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 18px;
+  color: rgba(183, 181, 186, 0.88);
+  font-weight: 300;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   SECTION TYPES
+========================================================= */
+.section-light {
+  padding: 60px 24px;
+  background: rgba(167, 139, 250, 0.03);
+}
+
+.section-default {
+  padding: 60px 24px;
+}
+
+.section-heading {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: #a78bfa;
+  margin-bottom: 32px;
+}
+
+.section-heading-large {
+  margin-bottom: 48px;
+}
+
+/* =========================================================
+   TEXT + CONTENT BLOCKS
+========================================================= */
+.overview-text {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #a78bfa;
+  margin-bottom: 16px;
+}
+
+.card-text {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.feature-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.feature-text {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================
+   TECH BADGES
+========================================================= */
+.tech-badge {
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid #8b5cf6;
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: #a78bfa;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.tech-badge:hover {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  transform: scale(1.1) translateY(-4px);
+  box-shadow: 0 10px 20px rgba(139, 92, 246, 0.45);
+  color: white;
+}
+
+/* =========================================================
+   FLOATING ACTION BUTTONS
+========================================================= */
+.bottom-floating-icon {
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+}
+
+.bottom-floating-icon.link {
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+}
+
+.bottom-floating-icon.whatsapp {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+}
+
+.bottom-floating-icon.contact {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   SCROLL TO TOP
+========================================================= */
+#scroll-top {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* =========================================================
+   CONTACT BUTTON
+========================================================= */
+.contact-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: white;
+  padding: 14px 34px;
+  border-radius: 12px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(167, 139, 250, 0.32);
+}
+
+/* =========================================================
+   VIEW TRANSITIONS
+========================================================= */
+@view-transition {
+  navigation: auto;
+}
+
+/* footer */
+.footer-link {
+  color: #9ca3af;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ddd6fe;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* social */
+.footer-social {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ddd;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.footer-social:hover {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ===== Image preview ===== */
+/* ===== IMAGE LIGHTBOX OVERLAY ===== */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-image-wrapper {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-image-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== CLOSE BUTTON ===== */
+.lightbox-close {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.5);
+}
+
+/* ===== HOVER EYE ICON ===== */
+.screenshot-eye {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 14px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.card-hover:hover .screenshot-eye {
+  opacity: 1;
+}
+
+.screenshot-eye span {
+  font-size: 32px;
+  color: white;
+}
+
+.screenshot-eye {
+  pointer-events: none;
+}

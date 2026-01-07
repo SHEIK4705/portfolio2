@@ -128,6 +128,93 @@
       </nav>
     </aside>
 
+    <!-- Floating Icons Panel -->
+    <div class="icon-panel" id="iconPanel">
+      <div class="toggle-btn" id="toggleBtn" title="Social Icons">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+
+      <a href="tel:+917904889179" class="icon-item">
+        <div class="icon bg-blue-500">
+          <i class="fa fa-phone"></i>
+        </div>
+      </a>
+
+      <a
+        href="https://wa.me/7904889179?text=Hello%20Sheik%20Mohammed"
+        target="_blank"
+        class="icon-item"
+      >
+        <div class="icon bg-green-500">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </a>
+
+      <!-- <a href="https://facebook.com/" target="_blank" class="icon-item">
+        <div class="icon bg-blue-600">
+          <i class="fab fa-facebook-f"></i>
+        </div>
+      </a> -->
+
+      <a
+        href="https://www.instagram.com/smarif_4705/"
+        target="_blank"
+        class="icon-item"
+      >
+        <div class="icon bg-pink-600">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/sheik-mohammed-arif-a-3b3036327"
+        target="_blank"
+        class="icon-item"
+      >
+        <div class="icon bg-blue-700">
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+      </a>
+
+      <!-- <a href="https://github.com/" target="_blank" class="icon-item">
+        <div class="icon bg-gray-800">
+          <i class="fab fa-github"></i>
+        </div>
+      </a> -->
+
+      <!-- <a href="https://behance.net/" target="_blank" class="icon-item">
+        <div class="icon bg-blue-400">
+          <i class="fab fa-behance"></i>
+        </div>
+      </a> -->
+
+      <a href="https://fiverr.com/" target="_blank" class="icon-item">
+        <div class="icon bg-green-600">
+          <i class="fab fa-fonticons-fi"></i>
+        </div>
+      </a>
+    </div>
+
+    <!-- script -->
+    <script>
+      const iconPanel = document.getElementById("iconPanel");
+      const toggleBtn = document.getElementById("toggleBtn");
+
+      toggleBtn.addEventListener("click", function () {
+        iconPanel.classList.toggle("open");
+      });
+
+      // Close panel when clicking outside (optional)
+      document.addEventListener("click", function (event) {
+        if (
+          !iconPanel.contains(event.target) &&
+          !toggleBtn.contains(event.target)
+        ) {
+          iconPanel.classList.remove("open");
+        }
+      });
+    </script>
+
     <!-- ================= HERO ================= -->
     <section
       id="hero"
@@ -610,8 +697,10 @@
               </div>
 
               <div class="project-actions">
-                <a href="https://smarif.lovestoblog.com" target="_blank">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a href="https://smarif.lovestoblog.com" target="_blank"
+                  >Live ↗</a
+                >
+                <a href="./projects/gb.html">More details ⌘</a>
               </div>
             </div>
           </article>
@@ -634,8 +723,8 @@
               </div>
 
               <div class="project-actions">
-                <a href="#">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a href="#" aria-disabled="true">Live ↗</a>
+                <a href="./projects/dr.html">More details ⌘</a>
               </div>
             </div>
           </article>
@@ -659,8 +748,8 @@
               </div>
 
               <div class="project-actions">
-                <a href="#">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a href="#not-deployed" aria-disabled="true">Live ↗</a>
+                <a href="./projects/cleannotes.html">More details ⌘</a>
               </div>
             </div>
           </article>
@@ -682,8 +771,8 @@
               </div>
 
               <div class="project-actions">
-                <a href="#">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a href="#" aria-disabled="true">Live ↗</a>
+                <a href="./projects/truthlense.html">More details ⌘</a>
               </div>
             </div>
           </article>
@@ -706,7 +795,7 @@
 
               <div class="project-actions">
                 <a href="https://yaar.co.in" target="_blank">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a href="./projects/yaar.html">More details ⌘</a>
               </div>
             </div>
           </article>
@@ -730,8 +819,12 @@
               </div>
 
               <div class="project-actions">
-                <a href="#">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a
+                  href="#"
+                  onclick="alert('Under Development. Click More details.')"
+                  >Live ↗</a
+                >
+                <a href="./projects/notemate.html">More details ⌘</a>
               </div>
             </div>
           </article>
@@ -755,8 +848,8 @@
               </div>
 
               <div class="project-actions">
-                <a href="airosys.lovestoblog.com">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a href="https://airosys.in" target="_blank">Live ↗</a>
+                <a href="./projects/ac.html">More details ⌘</a>
               </div>
             </div>
           </article>
@@ -784,8 +877,16 @@
               </div>
 
               <div class="project-actions">
-                <a href="#">Live ↗</a>
-                <a href="#">Code ⌘</a>
+                <a
+                  href="#projects"
+                  onclick="alert('Under development. Comming Soon')"
+                  >Live ↗</a
+                >
+                <a
+                  href="#projects"
+                  onclick="alert('Under development. Comming Soon')"
+                  >More details ⌘</a
+                >
               </div>
             </div>
           </article>

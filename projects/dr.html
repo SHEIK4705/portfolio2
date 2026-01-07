@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Reporting — AI Explainable Analytics Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="project.css" />
+  </head>
+
+  <body class="h-full overflow-auto scroll-smooth">
+    <div id="main-wrapper" class="w-full h-full z-0">
+      <!-- BACK -->
+      <button
+        id="back-btn"
+        onclick="window.history.back()"
+        class="fixed top-6 left-6 z-50 btn-float"
+      >
+        ← Back
+      </button>
+
+      <!-- FLOAT BUTTONS -->
+      <div class="fixed bottom-6 left-6 z-50 flex gap-3">
+        <!-- LIVE (Optional — add link later if deployed) -->
+        <a
+          href="#"
+          class="btn-float glow bottom-floating-icon link"
+          aria-label="External link"
+        >
+          <svg
+            width="22"
+            height="22"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M10 13a5 5 0 0 0 7.54.54l2-2a5 5 0 0 0-7.07-7.07l-1.5 1.5"
+            ></path>
+            <path
+              d="M14 11a5 5 0 0 0-7.54-.54l-2 2a5 5 0 0 0 7.07 7.07l1.5-1.5"
+            ></path>
+          </svg>
+        </a>
+
+        <!-- WHATSAPP -->
+        <a
+          href="https://wa.me/917904889179?text=Hi%20Sheik,%20tell%20me%20more%20about%20Dynamic%20Reporting."
+          target="_blank"
+          class="btn-float glow bottom-floating-icon whatsapp"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12.012 2c-5.508 0-9.987 4.479-9.987 9.987 0 1.763.46 3.42 1.262 4.86L2 22l5.314-1.395a9.917 9.917 0 004.698 1.186h.005c5.507 0 9.986-4.479 9.986-9.987 0-2.67-1.04-5.18-2.924-7.065A9.925 9.925 0 0012.012 2z"
+            />
+          </svg>
+        </a>
+
+        <!-- MAIL -->
+        <a
+          href="mailto:sheikwebstudio@gmail.com"
+          class="btn-float glow bottom-floating-icon contact"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <polyline points="3,7 12,13 21,7"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- SCROLL TOP -->
+      <button
+        id="scroll-top"
+        class="fixed bottom-6 right-6 z-50 btn-float glow"
+      >
+        <svg width="24" height="24" fill="none" stroke="white" stroke-width="2">
+          <line x1="12" y1="19" x2="12" y2="5"></line>
+          <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+      </button>
+
+      <!-- HERO -->
+      <section class="hero-section text-center">
+        <div style="max-width: 1200px; width: 100%">
+          <h1 class="hero-title gradient-text fade-in-up stagger-1">
+            Dynamic Reporting — AI-Driven Explainable Analytics
+          </h1>
+
+          <p class="hero-subtitle fade-in-up stagger-2">
+            Smart dashboards, instant insights, and human-readable explanations
+            — without writing code.
+          </p>
+        </div>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section class="section-light">
+        <div style="max-width: 1200px; margin: 0 auto">
+          <h2 class="section-heading fade-in-up stagger-3">Overview</h2>
+
+          <p class="overview-text fade-in-up stagger-4">
+            Dynamic Reporting helps teams transform raw data into dashboards and
+            actionable explanations. Upload files, connect databases, ask
+            questions in plain English — and click any chart point to understand
+            why numbers changed. Built for non-technical users, it is fast,
+            lightweight, and explainable by default.
+          </p>
+        </div>
+      </section>
+
+      <!-- OBJECTIVES -->
+      <section class="section-default">
+        <div style="max-width: 1200px; margin: 0 auto">
+          <h2
+            class="section-heading section-heading-large fade-in-up stagger-3"
+          >
+            Key Objectives
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="card-hover shine-effect p-8 rounded-2xl fade-in-up stagger-4"
+            >
+              <h3 class="card-title">No-Code Analytics</h3>
+              <p class="card-text">
+                Build dashboards from SQL, NoSQL, or CSV — without queries.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-8 rounded-2xl fade-in-up stagger-5"
+            >
+              <h3 class="card-title">Explainable Insights</h3>
+              <p class="card-text">
+                Show human-readable reasons behind spikes and drops.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-8 rounded-2xl fade-in-up stagger-6"
+            >
+              <h3 class="card-title">Faster Decisions</h3>
+              <p class="card-text">
+                Help teams understand trends instead of guessing.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-8 rounded-2xl fade-in-up stagger-4"
+            >
+              <h3 class="card-title">Unified Data</h3>
+              <p class="card-text">
+                Work with multiple formats in one simple platform.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-8 rounded-2xl fade-in-up stagger-5"
+            >
+              <h3 class="card-title">Lightweight & Accessible</h3>
+              <p class="card-text">
+                Quick setup and clean UI across all devices.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-8 rounded-2xl fade-in-up stagger-6"
+            >
+              <h3 class="card-title">Future AI Power</h3>
+              <p class="card-text">
+                Built for forecasting, anomaly detection, and voice assistance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CORE FEATURES -->
+      <section class="section-light">
+        <div style="max-width: 1200px; margin: auto">
+          <h2
+            class="section-heading section-heading-large fade-in-up stagger-3"
+          >
+            Core Features
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-4"
+            >
+              <h4 class="feature-title">Interactive Dashboards</h4>
+              <p class="feature-text">
+                Drag-and-drop charts with live refresh and saved layouts.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-5"
+            >
+              <h4 class="feature-title">Click-to-Explain</h4>
+              <p class="feature-text">
+                Click any point to see why values changed — with confidence
+                score.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-6"
+            >
+              <h4 class="feature-title">Ask-Your-Data Chat</h4>
+              <p class="feature-text">
+                Ask questions in plain English and get charts automatically.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-4"
+            >
+              <h4 class="feature-title">Anomaly Pulse</h4>
+              <p class="feature-text">
+                Detects unusual spikes or drops and alerts the user.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-5"
+            >
+              <h4 class="feature-title">Unified Connectors</h4>
+              <p class="feature-text">
+                CSV uploads, MySQL, MongoDB — Google Sheets coming soon.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-6"
+            >
+              <h4 class="feature-title">Query Editor</h4>
+              <p class="feature-text">
+                Create filters, run analytics, and save custom views.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-4"
+            >
+              <h4 class="feature-title">Narrative Reports</h4>
+              <p class="feature-text">
+                Convert dashboards into automatic AI-written summaries.
+              </p>
+            </div>
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-4"
+            >
+              <h4 class="feature-title">Builder</h4>
+              <p class="feature-text">
+                Compare diverse of data in visual format. and present our data like dashboard. 
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PLANNED -->
+      <section class="section-default">
+        <div style="max-width: 1200px; margin: auto">
+          <h2
+            class="section-heading section-heading-large fade-in-up stagger-3"
+          >
+            Planned AI Features
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-4"
+            >
+              <h4 class="feature-title">Forecasting</h4>
+              <p class="feature-text">Predict trends automatically.</p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-5"
+            >
+              <h4 class="feature-title">Voice Assistant</h4>
+              <p class="feature-text">
+                Ask questions by speaking — get insights instantly.
+              </p>
+            </div>
+
+            <div
+              class="card-hover shine-effect p-7 rounded-2xl fade-in-up stagger-6"
+            >
+              <h4 class="feature-title">Auto Layouts</h4>
+              <p class="feature-text">
+                Generate dashboards automatically from data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH STACK -->
+      <section class="section-light">
+        <div style="max-width: 1200px; margin: auto">
+          <h2
+            class="section-heading section-heading-large fade-in-up stagger-3"
+          >
+            Tech Stack
+          </h2>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="tech-badge fade-in-up stagger-4">React</span>
+            <span class="tech-badge fade-in-up stagger-5">Tailwind CSS</span>
+            <span class="tech-badge fade-in-up stagger-6">Recharts</span>
+            <span class="tech-badge fade-in-up stagger-4">Node.js</span>
+            <span class="tech-badge fade-in-up stagger-5">Express</span>
+            <span class="tech-badge fade-in-up stagger-6">MongoDB</span>
+            <span class="tech-badge fade-in-up stagger-4">MySQL</span>
+            <span class="tech-badge fade-in-up stagger-5">JWT</span>
+            <span class="tech-badge fade-in-up stagger-6">Helmet</span>
+            <span class="tech-badge fade-in-up stagger-4">OpenRouter</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SCREENSHOTS ================= -->
+      <section class="section-light">
+        <div style="max-width: 1200px; margin: auto">
+          <h2
+            class="section-heading section-heading-large fade-in-up stagger-3"
+          >
+            Output Screenshots
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="card-hover shine-effect fade-in-up stagger-4 p-4 rounded-2xl aspect-video cursor-pointer"
+            >
+              <img src="../images/dr1.png" alt="Screenshot 1" />
+            </div>
+            <div
+              class="card-hover shine-effect fade-in-up stagger-5 p-4 rounded-2xl aspect-video cursor-pointer"
+            >
+              <img src="../images/dr2.png" alt="Screenshot 1" />
+            </div>
+            <div
+              class="card-hover shine-effect fade-in-up stagger-6 p-4 rounded-2xl aspect- cursor-pointer"
+            >
+              <img src="../images/dr3.png" alt="Screenshot 1" />
+            </div>
+            <div
+              class="card-hover shine-effect fade-in-up stagger-6 p-4 rounded-2xl aspect-video cursor-pointer"
+            >
+              <img src="../images/dr4.png" alt="Screenshot 1" />
+            </div>
+            <div
+              class="card-hover shine-effect fade-in-up stagger-6 p-4 rounded-2xl aspect-video cursor-pointer"
+            >
+              <img src="../images/dr5.png" alt="Screenshot 1" />
+            </div>
+            <div
+              class="card-hover shine-effect fade-in-up stagger-6 p-4 rounded-2xl aspect-video cursor-pointer"
+            >
+              <img src="../images/dr6.png" alt="Screenshot 1" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section id="contact" class="section-light text-center">
+        <div style="max-width: 1200px; margin: auto">
+          <h2 class="section-heading fade-in-up stagger-3">Get In Touch</h2>
+
+          <p class="fade-in-up stagger-4 card-text mb-6">
+            Want this kind of system for your institute? Let's talk.
+          </p>
+
+          <a
+            href="mailto:contact@example.com"
+            class="contact-btn fade-in-up stagger-5 btn-float glow"
+          >
+            Contact Us →
+          </a>
+        </div>
+      </section>
+
+      <!-- ================= FOOTER ================= -->
+      <footer
+        id="footer"
+        class="bg-transparent border-t border-white/10 max-w-6xl mx-auto"
+        data-aos="fade-up"
+      >
+        <div
+          class="px-5 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+        >
+          <!-- Brand / copyright -->
+          <div>
+            <h3 class="text-lg font-semibold text-white">
+              Arif<span class="text-violet-400">.</span>
+            </h3>
+            <p class="mt-2 text-sm text-gray-400 max-w-xs">
+              Designing and building clean, reliable, and scalable web
+              applications.
+            </p>
+          </div>
+
+          <!-- Footer navigation -->
+          <nav class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <a href="../index.html#about" class="footer-link">About</a>
+            <a href="../index.html#services" class="footer-link">Services</a>
+            <a href="../index.html#projects" class="footer-link">Projects</a>
+            <a href="../index.html#skills" class="footer-link">Skills</a>
+            <a href="../index.html#contact" class="footer-link">Contact</a>
+          </nav>
+
+          <!-- Social links -->
+          <div class="flex gap-3">
+            <!-- instagram -->
+            <a
+              href="https://instagram.com/smarif_4705"
+              class="footer-social"
+              aria-label="Instagram"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+                xmlns="www.w3.org"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122c-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06s-3.056-.01-4.122-.06c-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.01 15.056 2 14.717 2 12s.01-3.056.06-4.122c.05-1.065.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.01 9.283 2 12 2zm0 1.8c-2.67 0-2.987.01-4.042.059-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.048 1.055-.058 1.371-.058 4.042s.01 2.987.058 4.042c.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.042.058s2.987-.01 4.042-.058c.975-.045 1.504-.207 1.857-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.371.058-4.042s-.01-2.987-.058-4.042c-.045-.975-.207-1.504-.344-1.857-.182-.467-.398-.8-.748-1.15-.35-.35-.683-.566-1.15-.748-.353-.137-.882-.3-1.857-.344-1.055-.048-1.371-.059-4.042-.059zM12 6.865A5.135 5.135 0 1 1 12 17.135 5.135 5.135 0 0 1 12 6.865zm0 1.8a3.335 3.335 0 1 0 0 6.67 3.335 3.335 0 0 0 0-6.67zM17.34 5.46a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"
+                />
+              </svg>
+            </a>
+            <!-- Linked in -->
+            <a
+              href="https://www.linkedin.com/in/sheik-mohammed-arif-a-3b3036327"
+              class="footer-social"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5
+              1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 8h4.56v14H.22zM8.34 8h4.37v1.92h.06
+              c.61-1.16 2.1-2.38 4.32-2.38
+              4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.62
+              c0-1.58-.03-3.62-2.21-3.62
+              -2.21 0-2.55 1.73-2.55 3.51V22H8.34z"
+                />
+              </svg>
+            </a>
+            <!-- github -->
+            <a
+              href="https://github.com/SHEIK4705"
+              class="footer-social"
+              aria-label="GitHub"
+              ><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483
+            0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466
+            -.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032
+            .892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338
+            -2.22-.253-4.555-1.113-4.555-4.951
+            0-1.093.39-1.988 1.029-2.688
+            -.103-.253-.446-1.27.098-2.646
+            0 0 .84-.27 2.75 1.026
+            A9.564 9.564 0 0112 6.844
+            a9.56 9.56 0 012.504.337
+            c1.909-1.296 2.747-1.026 2.747-1.026
+            .546 1.376.202 2.393.1 2.646
+            .64.7 1.028 1.595 1.028 2.688
+            0 3.848-2.339 4.695-4.566 4.944
+            .359.31.678.92.678 1.855
+            0 1.338-.012 2.419-.012 2.747
+            0 .268.18.58.688.482
+            A10.02 10.02 0 0022 12.017
+            C22 6.484 17.523 2 12 2z"
+                />
+              </svg>
+            </a>
+            <!-- mail -->
+            <a
+              href="mailto:sheikwebstudio@gmail.com"
+              class="footer-social"
+              aria-label="Mail"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.5 4.5A2.25 2.25 0 013.75 2.25h16.5A2.25 2.25 0 0122.5 4.5v15a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 19.5v-15zm16.5 1.125L12 11.25 4.5 5.625V17.25h15V5.625zM12 9.75l7.5-4.875H4.5l7.5 4.875z"
+                />
+              </svg>
+            </a>
+            <!-- Whatsapp -->
+            <a
+              href="https://wa.me/917904889179?text=Hello%20Arif,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project."
+              class="footer-social"
+              aria-label="WhatsApp"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5"
+                xmlns="www.w3.org"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.012 2c-5.508 0-9.987 4.479-9.987 9.987 0 1.763.46 3.42 1.262 4.86L2 22l5.314-1.395a9.917 9.917 0 004.698 1.186h.005c5.507 0 9.986-4.479 9.986-9.987 0-2.67-1.04-5.18-2.924-7.065A9.925 9.925 0 0012.012 2zm5.47 14.02c-.3.84-1.502 1.532-2.07 1.637-.53.099-1.214.162-3.642-.84-3.08-1.268-5.07-4.401-5.223-4.604-.153-.203-1.222-1.626-1.222-3.1 0-1.474.773-2.197 1.048-2.494.275-.297.6-.372.8-.372l.574.005c.182.008.423-.069.664.512.248.599.847 2.07.92 2.219.074.149.123.322.025.52-.099.198-.149.322-.297.496-.149.173-.313.387-.446.52-.149.148-.305.31-.132.61.174.298.773 1.275 1.66 2.065.14.124.96.86 2.078 1.347.347.151.554.126.76-.112.207-.238.892-1.04 1.132-1.399.24-.359.48-.298.81-.174.33.124 2.096 1.026 2.458 1.211.362.185.603.275.69.424.088.148.088.86-.213 1.7z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- copyright -->
+        <p class="my-3 mx-auto text-center text-sm text-gray-500">
+          © <span id="year"></span> Arif. All rights reserved.
+        </p>
+      </footer>
+    </div>
+
+    <script src="project.js"></script>
+  </body>
+</html>
