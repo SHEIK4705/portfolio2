@@ -62,7 +62,9 @@ header a.font-heading:hover {
 .hamburger .line {
   fill: none;
   stroke-width: 2;
-  transition: stroke-dasharray 0.4s, stroke-dashoffset 0.4s;
+  transition:
+    stroke-dasharray 0.4s,
+    stroke-dashoffset 0.4s;
   stroke-linecap: round;
 }
 .hamburger .line-top-bottom {
@@ -83,7 +85,9 @@ header a.font-heading:hover {
   position: relative;
   font-weight: 500;
   color: #cbd5f5;
-  transition: color 0.3s ease, letter-spacing 0.3s ease;
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.3s ease;
 }
 
 .nav-link:hover {
@@ -160,7 +164,9 @@ header a.font-heading:hover {
   fill: none;
   stroke-width: 2;
   stroke-linecap: round;
-  transition: stroke-dasharray 0.4s, stroke-dashoffset 0.4s;
+  transition:
+    stroke-dasharray 0.4s,
+    stroke-dashoffset 0.4s;
 }
 .line-top-bottom {
   stroke-dasharray: 12 63;
@@ -279,7 +285,10 @@ header a.font-heading:hover {
   /* idle animation */
   animation: cardBreath 10s ease-in-out infinite;
 
-  transition: transform 0.6s ease, box-shadow 0.6s ease, border-color 0.6s ease;
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease,
+    border-color 0.6s ease;
 }
 
 /* inner glow layer */
@@ -290,13 +299,16 @@ header a.font-heading:hover {
   border-radius: inherit;
   pointer-events: none;
 
-  box-shadow: inset 0 0 0 1px rgba(124, 58, 237, 0.14),
+  box-shadow:
+    inset 0 0 0 1px rgba(124, 58, 237, 0.14),
     inset 0 -40px 60px rgba(124, 58, 237, 0.1);
 
   opacity: 0.45;
 
   animation: glowBreath 14s ease-in-out infinite;
-  transition: opacity 0.6s ease, box-shadow 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    box-shadow 0.6s ease;
 }
 
 /* hover: confident lift */
@@ -306,7 +318,9 @@ header a.font-heading:hover {
 
   border-color: rgba(124, 58, 237, 0.4);
 
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35), 0 0 60px rgba(124, 58, 237, 0.22);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(124, 58, 237, 0.22);
 }
 
 /* hover: glow intensifies */
@@ -314,7 +328,8 @@ header a.font-heading:hover {
   animation-play-state: paused;
   opacity: 0.85;
 
-  box-shadow: inset 0 0 0 1px rgba(124, 58, 237, 0.45),
+  box-shadow:
+    inset 0 0 0 1px rgba(124, 58, 237, 0.45),
     inset 0 -70px 100px rgba(124, 58, 237, 0.3);
 }
 
@@ -351,14 +366,18 @@ header a.font-heading:hover {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.45s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.45s ease;
 }
 
 .project-card:hover {
   transform: translateY(-8px);
   border-color: rgba(124, 58, 237, 0.4);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.45), 0 0 30px rgba(124, 58, 237, 0.15);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(124, 58, 237, 0.15);
 }
 
 /* image animation */
@@ -411,19 +430,26 @@ header a.font-heading:hover {
 
 /* actions */
 .project-actions {
-  margin-top: 0.8rem;
+  margin-top: 1.2rem;
   display: flex;
   gap: 1rem;
 }
 
 .project-actions a {
   font-size: 0.9rem;
-  color: #c7bfff;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: white;
+  background-color: rgb(139, 78, 244);
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background-color 0.3 ease;
 }
 
 .project-actions a:hover {
-  transform: translateX(6px);
+  background-color: #7c3aed;
+  /* transform: translateX(6px); */
   opacity: 0.9;
 }
 
@@ -461,15 +487,19 @@ header a.font-heading:hover {
   padding: 2.2rem;
   overflow: hidden;
 
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.45s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.45s ease;
 }
 
 /* hover elevation */
 .skill-card:hover {
   transform: translateY(-10px);
   border-color: rgba(139, 92, 246, 0.45);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), 0 0 40px rgba(139, 92, 246, 0.18);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(139, 92, 246, 0.18);
 }
 
 /* soft inner glow */
@@ -493,7 +523,9 @@ header a.font-heading:hover {
   font-size: 2.1rem;
   margin-bottom: 1rem;
   display: inline-block;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), filter 0.45s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.45s ease;
 }
 
 .skill-card:hover .skill-icon {
@@ -532,7 +564,9 @@ header a.font-heading:hover {
   border-radius: 999px;
   background: rgba(139, 92, 246, 0.16);
   color: #e9e4ff;
-  transition: background 0.35s ease, transform 0.35s ease;
+  transition:
+    background 0.35s ease,
+    transform 0.35s ease;
 }
 
 .skill-card:hover .skill-tags span {
@@ -597,7 +631,8 @@ header a.font-heading:hover {
 /* dot glow on hover */
 .timeline-item:hover .timeline-dot,
 .timeline-card:hover .timeline-dot {
-  box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.18),
+  box-shadow:
+    0 0 0 6px rgba(139, 92, 246, 0.18),
     0 0 20px rgba(139, 92, 246, 0.4);
 }
 
@@ -623,7 +658,9 @@ header a.font-heading:hover {
   border: 1px solid rgba(255, 255, 255, 0.08);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 /* tooltip show */
@@ -638,7 +675,9 @@ header a.font-heading:hover {
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px; */
   padding: 0 1.8rem;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .timeline-card h3 {
@@ -713,7 +752,9 @@ header a.font-heading:hover {
 .faq-icon {
   font-size: 1.4rem;
   color: rgba(203, 213, 225, 0.6);
-  transition: transform 0.35s ease, color 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
 }
 
 /* answer */
